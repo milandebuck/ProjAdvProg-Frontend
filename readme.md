@@ -22,7 +22,6 @@ $ npm install
 Then start it
 
 ```sh 
-$ npm install
 $ npm start
 ```
 
