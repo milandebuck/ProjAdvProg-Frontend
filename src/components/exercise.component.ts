@@ -24,7 +24,7 @@ export class ExerciseComponent implements OnInit{
     private answers = [];
     ngOnInit(){
         console.log('initializing..');
-        this.entries=this.getEntries(this.lenght).subscribe();
+        this.entries=this.getEntries(this.lenght);
     }
 
     getEntries(count){
@@ -33,6 +33,7 @@ export class ExerciseComponent implements OnInit{
                 (entries) => {
                     this.entries=entries;
                     this.curEntry = entries[0];
+                    console.log("got the entries");
                 },
                 error => this.error = error
             )
