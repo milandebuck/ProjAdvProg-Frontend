@@ -4,13 +4,12 @@ import { Entry } from './../models/Entry';
 import { Observable }     from 'rxjs/Observable';
 @Injectable()
 export class EntryService {
-    private heroesUrl = 'app/heroes';  // URL to web API
     constructor (private http: Http) {}
     getEntries (): Observable<Entry[]> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization',localStorage.getItem('auth_token'));
-        return this.http.get("http://localhost:8080/Exercise",{ headers })
+        return this.http.get("http://teammartini.herokuapp.com/Exercise",{ headers })
             .map(this.extractData)
             .catch(this.handleError);
     }
