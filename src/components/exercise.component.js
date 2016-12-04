@@ -16,6 +16,7 @@ var ExerciseComponent = (function () {
         this.entryService = entryService;
         this.lenght = 10;
         this.count = 0;
+        this.i = 0;
         this.answers = [];
     }
     ;
@@ -26,7 +27,18 @@ var ExerciseComponent = (function () {
     ExerciseComponent.prototype.getEntries = function (count) {
         var _this = this;
         this.entryService.getEntries()
-            .subscribe(function (entries) { return _this.entries = entries; }, function (error) { return _this.error = error; });
+            .subscribe(function (entries) {
+            _this.entries = entries;
+            _this.curEntry = entries[0];
+        }, function (error) { return _this.error = error; });
+    };
+    ExerciseComponent.prototype.next = function (answer) {
+        if (this.count < this.entries.length) {
+            this.count++;
+            this.answers.push(answer);
+            this.curEntry = this.entries[this.count];
+        }
+        alert('test completed');
     };
     ExerciseComponent.prototype.correctExercise = function () {
     };
