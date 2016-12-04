@@ -22,7 +22,7 @@ var ExerciseComponent = (function () {
     ;
     ExerciseComponent.prototype.ngOnInit = function () {
         console.log('initializing..');
-        this.entries = this.getEntries(this.lenght);
+        this.entries = this.getEntries(this.lenght).subscribe();
     };
     ExerciseComponent.prototype.getEntries = function (count) {
         var _this = this;
@@ -38,7 +38,10 @@ var ExerciseComponent = (function () {
             this.answers.push(answer);
             this.curEntry = this.entries[this.count];
         }
-        alert('test completed');
+        else {
+            alert('test completed');
+        }
+        ;
     };
     ExerciseComponent.prototype.correctExercise = function () {
     };

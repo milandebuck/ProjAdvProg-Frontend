@@ -1,11 +1,11 @@
 <div>
     <h2>Test your knowledge [NL - EN]</h2>
-        <div>
+        <div *ngIf="curEntry">
             <label id="labelword" for="inputword">{{curEntry.languages[0]}}</label>
             <input type="text" class="form-control" id="inputword" value="{{curEntry.word}}" disabled>
             <label id="labelvertaling" for="inputvertaling">{{curEntry.languages[1]}}</label>
             <input #answer type="text" class="form-control" id="inputvertaling" placeholder="Answer">
-            <p class="progress" id="progress"></p>
+            <p class="progress" id="progress"><span>{{count}}</span>/{{entries.length}}</p>
             <button (click)="next(answer)">Next</button>
         </div>
     <button type="button" class="reset">Stop test</button>

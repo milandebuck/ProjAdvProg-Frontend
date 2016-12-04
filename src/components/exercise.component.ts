@@ -1,6 +1,7 @@
 // exercise.component.ts
 import {Component, OnInit } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+
+import { Entry } from './../models/Entry';
 
 import { EntryService } from './../services/entry.service';
 
@@ -10,9 +11,9 @@ import { EntryService } from './../services/entry.service';
     styles: [ require('./styles/exercise.component.css') ],
 })
 export class ExerciseComponent implements OnInit{
-    entries: Array<any>;
+    entries: Array<Entry>;
     answers: Array<any>;
-    curEntry: any;
+    curEntry: Entry;
     private error;
     constructor( private entryService:EntryService){
 
@@ -23,7 +24,7 @@ export class ExerciseComponent implements OnInit{
     private answers = [];
     ngOnInit(){
         console.log('initializing..');
-        this.entries=this.getEntries(this.lenght);
+        this.entries=this.getEntries(this.lenght).subscribe();
     }
 
     getEntries(count){
@@ -43,7 +44,9 @@ export class ExerciseComponent implements OnInit{
             this.answers.push(answer);
             this.curEntry = this.entries[this.count];
         }
-        alert('test completed')
+        else {
+            alert('test completed');
+        };
 
     }
 
