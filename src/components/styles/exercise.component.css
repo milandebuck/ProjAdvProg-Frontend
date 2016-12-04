@@ -1,19 +1,75 @@
 /* Wrapper */
 .innerWrapper{
     display: block;
-    width: 80rem;
+    width: 64rem;
     margin: 0 auto;
 }
 /* Title */
 h2{
     display: block;
+    width: 100%;
     color: #607D8B;
     font-size: 4rem;
-    font-weight: bold;
+    font-weight: lighter;
     text-align: center;
 }
-
-/* resetBtn */
+/* Content */
+.formContent{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    height: 20rem;
+    background-color: #CFD8DC;
+    margin-bottom: 4rem;
+}
+.formElement{
+    display: block;
+    float: left;
+    width: 35%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+.rightForm{
+    margin-left: 5rem;
+}
+.formElement input{
+    display: block;
+    width: 100%;
+    height: 4rem;
+    font-size: 3rem;
+    border: none;
+    border-left: solid;
+    border-width: thick;
+    border-left-color: #FFC107;
+    padding-left: 1rem;
+    color: #262626;
+}
+#labelvertaling, #labelword{
+    display: block;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: left;
+    width: 100%;
+    float: left;
+    margin-bottom: 1rem;
+    color: #262626;
+}
+/* Next Button */
+.nextBtn{
+    display: block;
+    float: right;
+    border: none;
+    background-color: #FFC107;
+    color: #ffffff;
+    width: 20rem;
+    height: 4rem;
+    font-size: 3rem;
+    font-weight: lighter;
+    margin: 1rem;
+}
+/* Reset Button */
 .resetBtn{
     float: right;
     display: block;
@@ -25,4 +81,5 @@ h2{
     font-size: 3rem;
     font-weight: lighter;
     margin-bottom: 5rem;
+    margin-right: 1rem;
 }

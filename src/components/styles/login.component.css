@@ -8,7 +8,7 @@ h2{
     display: block;
     color: #607D8B;
     font-size: 5rem;
-    font-weight: bold;
+    font-weight: lighter;
     text-align: center;
 }
 
@@ -19,7 +19,7 @@ h2{
     margin: auto;
 }
 #username, #password{
-    color: #000;
+    color: #262626;
     border: none;
     border-left: solid;
     border-width: thick;
@@ -29,27 +29,27 @@ h2{
     height: 4rem;
     margin-right: 150rem;
     margin-bottom: 1rem;
-    padding: 0rem;
+    padding-left: 1rem;
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #000;
+    color:    #262626;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #000;
+    color:    #262626;
     opacity:  1;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #000;
+    color:    #262626;
     opacity:  1;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color:    #000;
+    color:    #262626;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
 }
