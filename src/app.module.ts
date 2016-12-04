@@ -7,7 +7,8 @@ import { FormsModule } from '@angular/forms';
 import {
     AppComponent,
     LoginComponent,
-    ExerciseComponent
+    ExerciseComponent,
+    LoadingIndicator
 } from './components';
 
 import { routes } from './app.routes';
@@ -21,7 +22,7 @@ import { EntryService } from './services/entry.service';
 
 @NgModule({
     bootstrap: [ AppComponent ],
-    declarations: [ AppComponent,LoginComponent,ExerciseComponent ],
+    declarations: [ AppComponent,LoginComponent,ExerciseComponent,LoadingIndicator ],
     imports: [
         BrowserModule,
         HttpModule,

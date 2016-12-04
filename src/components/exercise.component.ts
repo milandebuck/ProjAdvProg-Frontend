@@ -4,13 +4,15 @@ import {Component, OnInit } from '@angular/core';
 import { Entry } from './../models/Entry';
 
 import { EntryService } from './../services/entry.service';
+import {LoadingPage,LoadingIndicator} from "./loading-indicator";
 
 @Component({
     selector: 'exercise',
     template: require('./templates/exercise.component.html'),
     styles: [ require('./styles/exercise.component.css') ],
+    directives:[ LoadingIndicator]
 })
-export class ExerciseComponent implements OnInit{
+export class ExerciseComponent extends LoadingPage implements OnInit{
     entries: Array<Entry>;
     answers: Array<any>;
     curEntry: Entry;
@@ -19,7 +21,8 @@ export class ExerciseComponent implements OnInit{
     languages=["NL-EN","EN-NL"];
     private error;
     constructor( private entryService:EntryService){
-
+        super(true);
+        this.ready();
     };
     private lenght = 10;
     count = 0;
@@ -31,6 +34,7 @@ export class ExerciseComponent implements OnInit{
     }
 
     startExercise(count,language){
+        this.standby();
         this.curlangs=language;
         this.setup = false;
         this.entries=this.getEntries(this.lenght);
@@ -42,6 +46,7 @@ export class ExerciseComponent implements OnInit{
                 (entries) => {
                     this.entries=entries;
                     this.curEntry = entries[0];
+                    this.ready();
                     console.log("got the entries");
                 },
                 error => this.error = error
