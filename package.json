@@ -1,5 +1,5 @@
 {
-  "name": "ng2-webpack-test",
+  "name": "ProjectAdvProg2016",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "test:headless": "karma start ./karma/karma.conf.js --browsers PhantomJS --autoWatch=true --singleRun=false",
     "test:single": "karma start ./karma/karma.conf.js --browsers PhantomJS",
     "heroku-postbuild": "tsc",
-    "postinstall": "webpack-dev-server  --config ./webpack/webpack.dev.js"
+    "postinstall": "webpack -p --config ./webpack/webpack.dev.js --progress"
   },
   "keywords": [],
   "author": "",
