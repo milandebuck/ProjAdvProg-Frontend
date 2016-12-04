@@ -1,3 +1,50 @@
+/*--- Start excercise ---*/
+/* Common */
+.startformElement{
+    display: block;
+    float: left;
+    width: 100%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+}
+/* Amount */
+#labelAmount, #labelLanguages{
+    display: block;
+    float: left;
+    font-size: 2rem;
+    width: 50%;
+    text-align: center;
+    color: #262626;
+    margin-top: 1rem;
+}
+#inputAmount, #languages{
+    display: block;
+    width: 30%;
+    height: 4rem;
+    font-size: 2.5rem;
+    border: none;
+    border-left: solid;
+    border-width: thick;
+    border-left-color: #FFC107;
+    padding-left: 1rem;
+    color: #262626;
+}
+/* Start Button */
+.startBtn{
+    display: block;
+    float: right;
+    border: none;
+    background-color: #FFC107;
+    color: #ffffff;
+    width: 20rem;
+    height: 4rem;
+    font-size: 3rem;
+    font-weight: lighter;
+    margin: 1rem;
+    margin-top: 2rem;
+}
+/*--- Exercise ---*/
 /* Wrapper */
 .innerWrapper{
     display: block;
@@ -84,7 +131,7 @@ h2{
     margin-right: 1rem;
 }
 /* Progress */
-.progress{
+.progress, #labelAmount{
     display: block;
     float: left;
     font-size: 2rem;

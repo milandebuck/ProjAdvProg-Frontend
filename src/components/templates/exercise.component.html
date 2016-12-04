@@ -2,11 +2,17 @@
         <div *ngIf="setup">
             <h2>Create new exercise</h2>
             <div class ="formContent">
-                <input #length type="number" min="0" max="300" value="10">
-                <select #ln name="languages" id="languages">
-                    <option *ngFor="let l of languages" value="{{l}}">{{l}}</option>
-                </select>
-                <button (click)="startExercise(length,ln)">Start exercise</button>
+                <section class="startformElement">
+                    <label id="labelAmount" for="inputAmount">Amount of words in the excercise:</label>
+                    <input #length type="number" min="0" max="300" value="10" class="amount" id="inputAmount">
+                </section>
+                <section class="startformElement">
+                    <label id="labelLanguages" class="labelLanguages" for="languages">What do you want to practise?</label>
+                    <select #ln name="languages" id="languages">
+                        <option *ngFor="let l of languages" value="{{l}}">{{l}}</option>
+                    </select>
+                </section>
+                <button (click)="startExercise(length,ln)" class="startBtn">Start exercise</button>
             </div>
         </div>
         <div *ngIf="curEntry">
