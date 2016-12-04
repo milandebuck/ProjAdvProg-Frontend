@@ -14,6 +14,9 @@ export class ExerciseComponent implements OnInit{
     entries: Array<Entry>;
     answers: Array<any>;
     curEntry: Entry;
+    setup:boolean;
+    curlangs:string;
+    languages=["NL-EN","EN-NL"];
     private error;
     constructor( private entryService:EntryService){
 
@@ -24,6 +27,12 @@ export class ExerciseComponent implements OnInit{
     private answers = [];
     ngOnInit(){
         console.log('initializing..');
+        this.setup =true;
+    }
+
+    startExercise(count,language){
+        this.curlangs=language;
+        this.setup = false;
         this.entries=this.getEntries(this.lenght);
     }
 

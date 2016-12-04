@@ -1,16 +1,29 @@
 <div class="innerWrapper">
-    <h2>Test your knowledge [NL - ENG]</h2>
-        <div class="formContent" *ngIf="curEntry">
-            <section class="leftForm formElement">
-                <label id="labelword" for="inputword">{{curEntry.languages[0]}}</label>
-                <input type="text" class="form-control" id="inputword" value="{{curEntry.word}}" disabled>
-            </section>
-            <section class="rightForm formElement">
-                <label id="labelvertaling" for="inputvertaling">{{curEntry.languages[1]}}</label>
-                <input #answer type="text" class="form-control" id="inputvertaling" placeholder="Answer">
-            </section>
-            <p class="progress" id="progress">Progress: <span>{{ count }}</span>/{{entries.length}}</p>
-            <button (click)="next(answer)" class="nextBtn">Next</button>
+        <div *ngIf="setup">
+            <h2>Create new exercise</h2>
+            <div class ="formContent">
+                <input #length type="number" min="0" max="300" value="10">
+                <select #ln name="languages" id="languages">
+                    <option *ngFor="let l of languages" value="{{l}}">{{l}}</option>
+                </select>
+                <button (click)="startExercise(length,ln)">Start exercise</button>
+            </div>
         </div>
+        <div *ngIf="curEntry">
+            <h2>Test your knowledge [{{curlangs}}]</h2>
+            <div class="formContent" >
+                <section class="leftForm formElement">
+                    <label id="labelword" for="inputword">{{curEntry.languages[0]}}</label>
+                    <input type="text" class="form-control" id="inputword" value="{{curEntry.word}}" disabled>
+                </section>
+                <section class="rightForm formElement">
+                    <label id="labelvertaling" for="inputvertaling">{{curEntry.languages[1]}}</label>
+                    <input #answer type="text" class="form-control" id="inputvertaling" placeholder="Answer">
+                </section>
+                <p class="progress" id="progress">Progress: <span>{{ count }}</span>/{{entries.length}}</p>
+                <button (click)="next(answer)" class="nextBtn">Next</button>
+            </div>
+        </div>
+
     <button type="button" class="resetBtn">Stop test</button>
 </div>

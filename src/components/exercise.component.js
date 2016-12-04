@@ -14,6 +14,7 @@ var entry_service_1 = require('./../services/entry.service');
 var ExerciseComponent = (function () {
     function ExerciseComponent(entryService) {
         this.entryService = entryService;
+        this.languages = ["NL-EN", "EN-NL"];
         this.lenght = 10;
         this.count = 0;
         this.i = 0;
@@ -22,6 +23,11 @@ var ExerciseComponent = (function () {
     ;
     ExerciseComponent.prototype.ngOnInit = function () {
         console.log('initializing..');
+        this.setup = true;
+    };
+    ExerciseComponent.prototype.startExercise = function (count, language) {
+        this.curlangs = language;
+        this.setup = false;
         this.entries = this.getEntries(this.lenght);
     };
     ExerciseComponent.prototype.getEntries = function (count) {
