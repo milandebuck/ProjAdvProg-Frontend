@@ -1,5 +1,5 @@
 // exercise.component.ts
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 
 import { EntryService } from './../services/entry.service';
@@ -10,7 +10,7 @@ import { EntryService } from './../services/entry.service';
     styles: [ require('./styles/exercise.component.css') ],
 })
 export class ExerciseComponent implements OnInit{
-    entries;
+    entries: Array<any>;
     private error;
     constructor( private entryService:EntryService){
 

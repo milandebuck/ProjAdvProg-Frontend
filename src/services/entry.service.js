@@ -14,13 +14,12 @@ var Observable_1 = require('rxjs/Observable');
 var EntryService = (function () {
     function EntryService(http) {
         this.http = http;
-        this.heroesUrl = 'app/heroes'; // URL to web API
     }
     EntryService.prototype.getEntries = function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', localStorage.getItem('auth_token'));
-        return this.http.get("http://localhost:8080/Exercise", { headers: headers })
+        return this.http.get("http://teammartini.herokuapp.com/Exercise", { headers: headers })
             .map(this.extractData)
             .catch(this.handleError);
     };

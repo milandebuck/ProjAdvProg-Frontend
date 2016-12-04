@@ -1,12 +1,14 @@
 <div>
     <h2>Test your knowledge [NL - EN]</h2>
-    <form action="">
-        <label id="labelNL" for="inputNL">NL</label>
-        <input type="text" #orginal class="form-control" id="inputNL" placeholder="Vraag">
-        <label id="labelEN" for="inputEN">EN</label>
-        <input type="text" #password class="form-control" id="inputEN" placeholder="Answer">
-        <p class="progress" id="progress"></p>
-        <button type="submit" class="btn btn-default">Next ></button>
-    </form>
+    <ul>
+        <li *ngFor="let entry of entries ; let i = index" >
+                <label id="labelword" for="inputword">{{entry.languages[0]}}</label>
+                <input type="text" class="form-control" id="inputword" value="{{entry.word}}" disabled>
+                <label id="labelvertaling" for="inputvertaling">{{entry.languages[1]}}</label>
+                <input #answer type="text" class="form-control" id="inputvertaling" placeholder="Answer">
+                <p class="progress" id="progress"></p>
+                <button (click)="next(answer); val = i">Next</button>
+        </li>
+    </ul>
     <button type="button" class="resetBtn">Stop test</button>
 </div>
