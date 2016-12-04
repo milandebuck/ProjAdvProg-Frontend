@@ -1,4 +1,6 @@
 export class Entry {
-    constructor(){}
+    word: string;
+    translation:string;
+    languages:Array<string>;
 
 }

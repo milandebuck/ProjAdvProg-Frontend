@@ -30,6 +30,7 @@ var ExerciseComponent = (function () {
             .subscribe(function (entries) {
             _this.entries = entries;
             _this.curEntry = entries[0];
+            console.log("got the entries");
         }, function (error) { return _this.error = error; });
     };
     ExerciseComponent.prototype.next = function (answer) {
@@ -38,7 +39,10 @@ var ExerciseComponent = (function () {
             this.answers.push(answer);
             this.curEntry = this.entries[this.count];
         }
-        alert('test completed');
+        else {
+            alert('test completed');
+        }
+        ;
     };
     ExerciseComponent.prototype.correctExercise = function () {
     };
