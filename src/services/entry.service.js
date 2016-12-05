@@ -15,11 +15,20 @@ var EntryService = (function () {
     function EntryService(http) {
         this.http = http;
     }
-    EntryService.prototype.getEntries = function () {
+    EntryService.prototype.getEntries = function (count) {
+        //create auth header
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', localStorage.getItem('auth_token'));
-        return this.http.get("http://teammartini.herokuapp.com/Exercise", { headers: headers })
+        //routeparams
+        var params = new http_1.URLSearchParams();
+        params.append('amount', count);
+        //create options
+        var options = new http_1.RequestOptions({
+            headers: headers,
+            search: params
+        });
+        return this.http.get("http://teammartini.herokuapp.com/Exercise", options)
             .map(this.extractData)
             .catch(this.handleError);
     };

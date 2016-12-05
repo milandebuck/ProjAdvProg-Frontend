@@ -33,15 +33,15 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
         this.setup =true;
     }
 
-    startExercise(count,language){
+    startExercise(amount,language){
         this.standby();
         this.curlangs=language;
         this.setup = false;
-        this.entries=this.getEntries(this.lenght);
+        this.entries=this.getEntries(amount.value);
     }
 
-    getEntries(count){
-        this.entryService.getEntries()
+    getEntries(amount){
+        this.entryService.getEntries(amount)
             .subscribe(
                 (entries) => {
                     this.entries=entries;

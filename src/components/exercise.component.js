@@ -34,15 +34,15 @@ var ExerciseComponent = (function (_super) {
         console.log('initializing..');
         this.setup = true;
     };
-    ExerciseComponent.prototype.startExercise = function (count, language) {
+    ExerciseComponent.prototype.startExercise = function (amount, language) {
         this.standby();
         this.curlangs = language;
         this.setup = false;
-        this.entries = this.getEntries(this.lenght);
+        this.entries = this.getEntries(amount.value);
     };
-    ExerciseComponent.prototype.getEntries = function (count) {
+    ExerciseComponent.prototype.getEntries = function (amount) {
         var _this = this;
-        this.entryService.getEntries()
+        this.entryService.getEntries(amount)
             .subscribe(function (entries) {
             _this.entries = entries;
             _this.curEntry = entries[0];
