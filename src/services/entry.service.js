@@ -32,6 +32,14 @@ var EntryService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    EntryService.prototype.getScore = function (answers) {
+        //add headers
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        //post answers and return score
+        return this.http.post('http://teammartini.herokuapp.com/Excercise', answers, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     EntryService.prototype.extractData = function (res) {
         var body = res.json();
         return body.data || {};

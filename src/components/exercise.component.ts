@@ -4,7 +4,7 @@ import {Component, OnInit } from '@angular/core';
 import { Entry } from './../models/Entry';
 
 import { EntryService } from './../services/entry.service';
-import {LoadingPage,LoadingIndicator} from "./loading-indicator";
+import {LoadingPage,LoadingIndicator} from "./loading-indicator/loading-indicator";
 
 @Component({
     selector: 'exercise',
@@ -61,8 +61,13 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
         }
         else {
             alert('test completed');
-        };
+        }
 
+    }
+
+    getScore(){
+        console.log("button stop");
+        console.log(this.entryService.getScore(this.answers));
     }
 
     private correctExercise(){

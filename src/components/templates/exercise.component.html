@@ -32,7 +32,7 @@
                     <button (click)="next(answer)" class="nextBtn">Next</button>
                 </div>
             </div>
-            <button type="button" class="resetBtn">Stop test</button>
+            <button (click)="getScore()" class="resetBtn">Stop test</button>
         </div>
         <div *ngSwitchCase="true" class="loadingwrapper">
             <loading-indicator></loading-indicator>

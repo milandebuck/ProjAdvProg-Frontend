@@ -2,6 +2,7 @@ import { Injectable }     from '@angular/core';
 import { Http, Response , Headers,RequestOptions,URLSearchParams} from '@angular/http';
 import { Entry } from './../models/Entry';
 import { Observable }     from 'rxjs/Observable';
+import {filter} from "rxjs/operator/filter";
 @Injectable()
 export class EntryService {
     constructor (private http: Http) {}
@@ -25,6 +26,15 @@ export class EntryService {
         return this.http.get("http://teammartini.herokuapp.com/Exercise",options)
             .map(this.extractData)
             .catch(this.handleError);
+    }
+
+    getScore(answers){
+        //add headers
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        //post answers and return score
+            return this.http.post('http://teammartini.herokuapp.com/Excercise', answers, {headers})
+                .map(res => res.json());
     }
 
     private extractData(res: Response) {

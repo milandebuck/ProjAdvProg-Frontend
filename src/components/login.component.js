@@ -19,7 +19,7 @@ var router_1 = require('@angular/router');
 //services
 var user_service_1 = require('./../services/user.service');
 //loading-indicator
-var loading_indicator_1 = require('./loading-indicator');
+var loading_indicator_1 = require('./loading-indicator/loading-indicator');
 var LoginComponent = (function (_super) {
     __extends(LoginComponent, _super);
     function LoginComponent(userService, router) {
