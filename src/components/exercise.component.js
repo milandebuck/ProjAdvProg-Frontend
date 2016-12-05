@@ -36,7 +36,7 @@ var ExerciseComponent = (function (_super) {
     };
     ExerciseComponent.prototype.startExercise = function (amount, language) {
         this.standby();
-        this.curlangs = language;
+        this.curlangs = language.selected;
         this.setup = false;
         this.entries = this.getEntries(amount.value);
     };
