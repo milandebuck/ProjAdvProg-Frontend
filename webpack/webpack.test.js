@@ -3,6 +3,8 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const rootDir = path.resolve(__dirname, '..');
+
 module.exports = {
     devtool: 'inline-source-map',
     module: {
@@ -18,6 +20,10 @@ module.exports = {
         extensions: ['', '.js', '.ts'],
         modulesDirectories: ['node_modules'],
         root: path.resolve('.', 'src')
+    },
+    output: {
+        filename: '[name].bundle.js',
+        path: path.resolve(rootDir, 'dist')
     },
     tslint: {
         emitErrors: true
