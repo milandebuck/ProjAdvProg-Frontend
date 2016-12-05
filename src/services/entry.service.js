@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -32,6 +31,15 @@ var EntryService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    EntryService.prototype.getScore = function (answers) {
+        //add headers
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        //post answers and return score
+        return this.http.post('http://teammartini.herokuapp.com/Excercise', answers, { headers: headers })
+            .map(function (res) { return res.json(); })
+            .map(res.);
+    };
     EntryService.prototype.extractData = function (res) {
         var body = res.json();
         return body.data || {};
@@ -55,6 +63,6 @@ var EntryService = (function () {
         __metadata('design:paramtypes', [http_1.Http])
     ], EntryService);
     return EntryService;
-}());
+})();
 exports.EntryService = EntryService;
 //# sourceMappingURL=entry.service.js.map

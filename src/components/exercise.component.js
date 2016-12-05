@@ -59,9 +59,10 @@ var ExerciseComponent = (function (_super) {
         else {
             alert('test completed');
         }
-        ;
     };
     ExerciseComponent.prototype.getScore = function () {
+        console.log("button stop");
+        console.log(this.entryService.getScore(this.answers));
     };
     ExerciseComponent.prototype.correctExercise = function () {
     };

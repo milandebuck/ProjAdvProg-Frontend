@@ -29,8 +29,12 @@ export class EntryService {
     }
 
     getScore(answers){
+        //add headers
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
         //post answers and return score
-            return this.http.post('http://teammartini.herokuapp.com/Excercise', answers);
+            return this.http.post('http://teammartini.herokuapp.com/Excercise', answers, {headers})
+                .map(res => res.json());
     }
 
     private extractData(res: Response) {
