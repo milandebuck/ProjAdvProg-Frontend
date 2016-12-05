@@ -16,7 +16,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // exercise.component.ts
 var core_1 = require('@angular/core');
 var entry_service_1 = require('./../services/entry.service');
-var loading_indicator_1 = require("./loading-indicator");
+var loading_indicator_1 = require("./loading-indicator/loading-indicator");
 var ExerciseComponent = (function (_super) {
     __extends(ExerciseComponent, _super);
     function ExerciseComponent(entryService) {
@@ -60,6 +60,8 @@ var ExerciseComponent = (function (_super) {
             alert('test completed');
         }
         ;
+    };
+    ExerciseComponent.prototype.getScore = function () {
     };
     ExerciseComponent.prototype.correctExercise = function () {
     };

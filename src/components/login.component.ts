@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { UserService } from './../services/user.service';
 
 //loading-indicator
-import {LoadingIndicator, LoadingPage} from './loading-indicator';
+import {LoadingIndicator, LoadingPage} from './loading-indicator/loading-indicator';
 
 //model
 import { User } from './../models/User';
