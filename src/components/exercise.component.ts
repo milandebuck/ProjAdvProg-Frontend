@@ -67,7 +67,12 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
 
     getScore(){
         console.log("button stop");
-        console.log(this.entryService.getScore(this.answers));
+        this.entryService.getScore(this.answers).subscribe(
+            (res) => {
+                console.log(res);
+            },
+            error => this.error = error
+        );
     }
 
     private correctExercise(){
