@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -49,6 +50,6 @@ var LoginComponent = (function (_super) {
         __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
-})(loading_indicator_1.LoadingPage);
+}(loading_indicator_1.LoadingPage));
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -60,8 +61,11 @@ var ExerciseComponent = (function (_super) {
         }
     };
     ExerciseComponent.prototype.getScore = function () {
+        var _this = this;
         console.log("button stop");
-        console.log(this.entryService.getScore(this.answers));
+        this.entryService.getScore(this.answers).subscribe(function (res) {
+            console.log(res);
+        }, function (error) { return _this.error = error; });
     };
     ExerciseComponent.prototype.correctExercise = function () {
     };
@@ -75,6 +79,6 @@ var ExerciseComponent = (function (_super) {
         __metadata('design:paramtypes', [entry_service_1.EntryService])
     ], ExerciseComponent);
     return ExerciseComponent;
-})(loading_indicator_1.LoadingPage);
+}(loading_indicator_1.LoadingPage));
 exports.ExerciseComponent = ExerciseComponent;
 //# sourceMappingURL=exercise.component.js.map
