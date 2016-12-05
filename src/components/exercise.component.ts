@@ -35,7 +35,7 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
 
     startExercise(amount,language){
         this.standby();
-        this.curlangs=language;
+        this.curlangs=language.selected;
         this.setup = false;
         this.entries=this.getEntries(amount.value);
     }
@@ -67,7 +67,12 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
 
     getScore(){
         console.log("button stop");
-        console.log(this.entryService.getScore(this.answers));
+        this.entryService.getScore(this.answers).subscribe(
+            (res) => {
+                console.log(res);
+            },
+            error => this.error = error
+        );
     }
 
     private correctExercise(){
