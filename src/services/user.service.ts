@@ -33,7 +33,8 @@ export class UserService {
 
     logout() {
         this.cookieService.deleteCookie();
-        console.log(this.cookieService.getCookie('auth_token'))
+        console.log("cookie: " + this.cookieService.getCookie('auth_token'));
+
         this.loggedIn = false;
     }
 
