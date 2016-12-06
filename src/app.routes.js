@@ -1,3 +1,4 @@
+"use strict";
 var login_component_1 = require('./components/login.component');
 var logged_in_guard_1 = require('./services/logged-in.guard');
 var exercise_component_1 = require("./components/exercise.component");
