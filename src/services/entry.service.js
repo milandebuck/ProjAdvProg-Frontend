@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -36,15 +37,17 @@ var EntryService = (function () {
     EntryService.prototype.getScore = function (answers) {
         //add headers
         var headers = new http_1.Headers();
-        //headers.append('Content-Type', 'text/plain');
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', this.cookieService.getCookie('auth_token'));
+        headers.append('Content-Type', 'text/plain');
+        //routeparams
+        var params = new http_1.URLSearchParams();
+        params.append('token', this.cookieService.getCookie('auth_token'));
         //options
         var options = new http_1.RequestOptions({
-            headers: headers
+            headers: headers,
+            search: params
         });
         //post answers and return score
-        return this.http.post('http://teammartini.herokuapp.com/Excercise', answers, options)
+        return this.http.post('http://teammartini.herokuapp.com/Excercise', JSON.stringify(answers), options)
             .map(this.extractData)
             .catch(this.handleError);
     };
@@ -71,6 +74,6 @@ var EntryService = (function () {
         __metadata('design:paramtypes', [http_1.Http, cookie_service_1.CookieService])
     ], EntryService);
     return EntryService;
-})();
+}());
 exports.EntryService = EntryService;
 //# sourceMappingURL=entry.service.js.map

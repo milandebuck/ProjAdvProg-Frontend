@@ -5,6 +5,7 @@ import { Observable }     from 'rxjs/Observable';
 import {filter} from "rxjs/operator/filter";
 
 import { CookieService } from './cookie.service'
+import {count} from "rxjs/operator/count";
 @Injectable()
 export class EntryService {
     constructor (private http: Http, private cookieService : CookieService) {}
@@ -33,16 +34,19 @@ export class EntryService {
     getScore(answers){
         //add headers
         let headers = new Headers();
-        //headers.append('Content-Type', 'text/plain');
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization',this.cookieService.getCookie('auth_token'));
+        headers.append('Content-Type', 'text/plain');
+
+        //routeparams
+        let params = new URLSearchParams();
+        params.append('token',this.cookieService.getCookie('auth_token'));
 
         //options
         let options = new RequestOptions({
-            headers:headers
+            headers: headers,
+            search: params
         });
         //post answers and return score
-            return this.http.post('http://teammartini.herokuapp.com/Excercise', answers, options)
+            return this.http.post('http://teammartini.herokuapp.com/Excercise', JSON.stringify(answers), options)
                 .map(this.extractData)
                 .catch(this.handleError);
     }
