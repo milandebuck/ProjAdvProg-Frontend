@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -30,6 +31,7 @@ var UserService = (function () {
             if (!res.status) {
                 console.log("login succesfull");
                 _this.cookieService.setCookie(res.token);
+                localStorage.setItem('username', username);
                 _this.loggedIn = true;
                 return true;
             }
@@ -49,6 +51,6 @@ var UserService = (function () {
         __metadata('design:paramtypes', [http_1.Http, cookie_service_1.CookieService])
     ], UserService);
     return UserService;
-})();
+}());
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map

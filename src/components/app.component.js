@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,9 +20,11 @@ var AppComponent = (function () {
     AppComponent.prototype.ngOnInit = function () {
         console.log('logincheck');
         this.loggedIn = this.userService.isLoggedIn();
+        this.username = localStorage.getItem('username');
     };
     AppComponent.prototype.logout = function () {
         this.userService.logout();
+        localStorage.removeItem('username');
         this.router.navigate(['login']);
     };
     AppComponent = __decorate([
@@ -33,6 +36,6 @@ var AppComponent = (function () {
         __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
     ], AppComponent);
     return AppComponent;
-})();
+}());
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

@@ -24,6 +24,7 @@ export class UserService {
                 if (!res.status) {
                     console.log("login succesfull");
                     this.cookieService.setCookie(res.token);
+                    localStorage.setItem('username',username);
                     this.loggedIn = true;
                     return true
                 }
