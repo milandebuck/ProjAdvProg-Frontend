@@ -31,8 +31,8 @@
                     <p class="progress" id="progress">Progress: <span>{{ count }}</span>/{{entries.length}}</p>
                     <button (click)="next(answer)" class="nextBtn">Next</button>
                 </div>
+                <button (click)="getScore()" class="resetBtn">Stop test</button>        
             </div>
-            <button (click)="getScore()" class="resetBtn">Stop test</button>
         </div>
         <div *ngSwitchCase="true" class="loadingwrapper">
             <loading-indicator></loading-indicator>
