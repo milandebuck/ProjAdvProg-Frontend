@@ -23,7 +23,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.logout = function () {
         this.userService.logout();
-        this.router.navigate(['Login']);
+        this.router.navigate(['login']);
     };
     AppComponent = __decorate([
         core_1.Component({
