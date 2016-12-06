@@ -39,6 +39,7 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
         this.curlangs=language.selected;
         this.setup = false;
         this.entries=this.getEntries(amount.value);
+        this.entries.forEach((entry) => entry.translation = "");
     }
 
     getEntries(amount){

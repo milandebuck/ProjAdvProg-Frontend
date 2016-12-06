@@ -14,11 +14,11 @@ export class EntryService {
         //create auth header
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization',this.cookieService.getCookie('auth_token'));
 
         //routeparams
         let params = new URLSearchParams();
         params.append('amount',count);
+        params.append('token', this.cookieService.getCookie('auth_token'));
 
         //create options
         let options = new RequestOptions({
