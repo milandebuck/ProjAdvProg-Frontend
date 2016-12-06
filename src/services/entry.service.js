@@ -38,7 +38,8 @@ var EntryService = (function () {
         headers.append('Content-Type', 'application/json');
         //post answers and return score
         return this.http.post('http://teammartini.herokuapp.com/Excercise', answers, { headers: headers })
-            .map(function (res) { return res.json(); });
+            .map(this.extractData)
+            .catch(this.handleError);
     };
     EntryService.prototype.extractData = function (res) {
         var body = res.json();

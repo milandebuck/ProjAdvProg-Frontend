@@ -54,13 +54,14 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     }
 
     next(answer){
-        if(this.count < this.entries.length){
-            this.count ++;
+        this.count ++;
+        if(this.entries[this.count]){
             this.answers.push(answer);
             this.curEntry = this.entries[this.count];
         }
         else {
-            alert('test completed');
+            console.log('test completed');
+            this.getScore();
         }
 
     }
