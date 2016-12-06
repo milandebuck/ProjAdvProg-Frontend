@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -51,6 +52,7 @@ var EntryService = (function () {
             .catch(this.handleError);
     };
     EntryService.prototype.extractData = function (res) {
+        console.log(res);
         var body = res.json();
         return body.data || {};
     };
@@ -73,6 +75,6 @@ var EntryService = (function () {
         __metadata('design:paramtypes', [http_1.Http, cookie_service_1.CookieService])
     ], EntryService);
     return EntryService;
-})();
+}());
 exports.EntryService = EntryService;
 //# sourceMappingURL=entry.service.js.map

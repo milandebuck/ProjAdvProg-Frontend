@@ -34,7 +34,7 @@ export class EntryService {
     getScore(answers){
         //add headers
         let headers = new Headers();
-        headers.append('Content-Type', 'text/plain');
+        headers.append('Content-Type', 'application/json');
 
         //routeparams
         let params = new URLSearchParams();
@@ -52,6 +52,7 @@ export class EntryService {
     }
 
     private extractData(res: Response) {
+        console.log(res);
         let body = res.json();
         return body.data || { };
     }

@@ -60,7 +60,7 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     next(answer){
         this.count ++;
         if(this.entries[this.count]){
-            this.entries[this.count-1].translation = answer
+            this.entries[this.count-1].translation = answer;
             this.curEntry = this.entries[this.count];
         }
         else {
