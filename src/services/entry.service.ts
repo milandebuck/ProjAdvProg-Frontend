@@ -46,12 +46,13 @@ export class EntryService {
             search: params
         });
         //post answers and return score
-            return this.http.post('http://teammartini.herokuapp.com/Excercise', JSON.stringify(answers), options)
+            return this.http.post('http://teammartini.herokuapp.com/Exercise', JSON.stringify(answers), options)
                 .map(this.extractData)
                 .catch(this.handleError);
     }
 
     private extractData(res: Response) {
+        console.log(res);
         let body = res.json();
         return body.data || { };
     }
