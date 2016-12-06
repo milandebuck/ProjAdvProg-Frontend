@@ -9,18 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 require('./rxjs-operators');
+var user_service_1 = require('../services/user.service');
 var AppComponent = (function () {
-    function AppComponent() {
-        this.title = "Hello world";
+    function AppComponent(userService, router) {
+        this.userService = userService;
+        this.router = router;
     }
+    AppComponent.prototype.ngOnInit = function () {
+        console.log('logincheck');
+        this.loggedIn = this.userService.isLoggedIn();
+    };
+    AppComponent.prototype.logout = function () {
+        this.userService.logout();
+        this.router.navigate(['Login']);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
             template: require('./templates/app.component.html'),
             styles: [require('./styles/app.component.css')]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
     ], AppComponent);
     return AppComponent;
 }());
