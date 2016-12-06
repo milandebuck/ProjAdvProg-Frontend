@@ -36,8 +36,13 @@ var EntryService = (function () {
         //add headers
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', localStorage.getItem('auth_token'));
+        //options
+        var options = new http_1.RequestOptions({
+            headers: headers
+        });
         //post answers and return score
-        return this.http.post('http://teammartini.herokuapp.com/Excercise', answers, { headers: headers })
+        return this.http.post('http://teammartini.herokuapp.com/Excercise', answers, options)
             .map(this.extractData)
             .catch(this.handleError);
     };
