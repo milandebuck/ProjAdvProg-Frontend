@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // user.service.ts
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var cookie_service_1 = require('./cookie.service');
 var UserService = (function () {
-    function UserService(http) {
+    function UserService(http, cookieService) {
         this.http = http;
+        this.cookieService = cookieService;
         this.loggedIn = false;
-        this.loggedIn = !!localStorage.getItem('auth_token');
+        this.loggedIn = !!this.cookieService.getCookie("auth_token");
     }
     UserService.prototype.login = function (username, password) {
         var _this = this;
@@ -28,7 +30,7 @@ var UserService = (function () {
             .map(function (res) {
             if (!res.status) {
                 console.log("login succesfull");
-                localStorage.setItem('auth_token', res.token);
+                _this.cookieService.setCookie(res.token);
                 _this.loggedIn = true;
                 return true;
             }
@@ -36,7 +38,8 @@ var UserService = (function () {
         });
     };
     UserService.prototype.logout = function () {
-        localStorage.removeItem('auth_token');
+        this.cookieService.deleteCookie();
+        console.log(this.cookieService.getCookie('auth_token'));
         this.loggedIn = false;
     };
     UserService.prototype.isLoggedIn = function () {
@@ -44,7 +47,7 @@ var UserService = (function () {
     };
     UserService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, cookie_service_1.CookieService])
     ], UserService);
     return UserService;
 }());

@@ -3,15 +3,17 @@ import { Http, Response , Headers,RequestOptions,URLSearchParams} from '@angular
 import { Entry } from './../models/Entry';
 import { Observable }     from 'rxjs/Observable';
 import {filter} from "rxjs/operator/filter";
+
+import { CookieService } from './cookie.service'
 @Injectable()
 export class EntryService {
-    constructor (private http: Http) {}
+    constructor (private http: Http, private cookieService : CookieService) {}
 
     getEntries (count): Observable<Entry[]> {
         //create auth header
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization',localStorage.getItem('auth_token'));
+        headers.append('Authorization',this.cookieService.getCookie('auth_token'));
 
         //routeparams
         let params = new URLSearchParams();
@@ -32,7 +34,7 @@ export class EntryService {
         //add headers
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization',localStorage.getItem('auth_token'));
+        headers.append('Authorization',this.cookieService.getCookie('auth_token'));
 
         //options
         let options = new RequestOptions({

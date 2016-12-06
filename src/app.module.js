@@ -19,6 +19,7 @@ var app_routes_1 = require('./app.routes');
 var user_service_1 = require('./services/user.service');
 var logged_in_guard_1 = require('./services/logged-in.guard');
 var entry_service_1 = require('./services/entry.service');
+var cookie_service_1 = require("./services/cookie.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -36,7 +37,8 @@ var AppModule = (function () {
             providers: [
                 user_service_1.UserService,
                 logged_in_guard_1.LoggedInGuard,
-                entry_service_1.EntryService
+                entry_service_1.EntryService,
+                cookie_service_1.CookieService
             ]
         }), 
         __metadata('design:paramtypes', [])

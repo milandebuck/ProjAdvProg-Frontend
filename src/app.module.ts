@@ -18,6 +18,7 @@ import { routes } from './app.routes';
 import { UserService } from './services/user.service';
 import { LoggedInGuard } from './services/logged-in.guard';
 import { EntryService } from './services/entry.service';
+import {CookieService} from "./services/cookie.service";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { EntryService } from './services/entry.service';
     providers: [
         UserService,
         LoggedInGuard,
-        EntryService
+        EntryService,
+        CookieService
     ]
 })
 export class AppModule {}

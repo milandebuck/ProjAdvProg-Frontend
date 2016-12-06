@@ -11,15 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Observable_1 = require('rxjs/Observable');
+var cookie_service_1 = require('./cookie.service');
 var EntryService = (function () {
-    function EntryService(http) {
+    function EntryService(http, cookieService) {
         this.http = http;
+        this.cookieService = cookieService;
     }
     EntryService.prototype.getEntries = function (count) {
         //create auth header
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', localStorage.getItem('auth_token'));
+        headers.append('Authorization', this.cookieService.getCookie('auth_token'));
         //routeparams
         var params = new http_1.URLSearchParams();
         params.append('amount', count);
@@ -36,7 +38,7 @@ var EntryService = (function () {
         //add headers
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', localStorage.getItem('auth_token'));
+        headers.append('Authorization', this.cookieService.getCookie('auth_token'));
         //options
         var options = new http_1.RequestOptions({
             headers: headers
@@ -66,7 +68,7 @@ var EntryService = (function () {
     };
     EntryService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, cookie_service_1.CookieService])
     ], EntryService);
     return EntryService;
 }());
