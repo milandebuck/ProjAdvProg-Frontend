@@ -31,8 +31,12 @@ export class EntryService {
     getScore(answers){
         //add headers
         let headers = new Headers();
+        //headers.append('Content-Type', 'text/plain');
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization',localStorage.getItem('auth_token'));
+        /*headers.append('Access-Control-Allow-Origin', '*');
+        headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+        headers.append('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization');*/
 
         //options
         let options = new RequestOptions({

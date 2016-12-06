@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -35,8 +34,12 @@ var EntryService = (function () {
     EntryService.prototype.getScore = function (answers) {
         //add headers
         var headers = new http_1.Headers();
+        //headers.append('Content-Type', 'text/plain');
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', localStorage.getItem('auth_token'));
+        /*headers.append('Access-Control-Allow-Origin', '*');
+        headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+        headers.append('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization');*/
         //options
         var options = new http_1.RequestOptions({
             headers: headers
@@ -69,6 +72,6 @@ var EntryService = (function () {
         __metadata('design:paramtypes', [http_1.Http])
     ], EntryService);
     return EntryService;
-}());
+})();
 exports.EntryService = EntryService;
 //# sourceMappingURL=entry.service.js.map
