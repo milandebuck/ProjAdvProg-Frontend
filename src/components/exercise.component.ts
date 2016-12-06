@@ -15,6 +15,7 @@ import {LoadingPage,LoadingIndicator} from "./loading-indicator/loading-indicato
 export class ExerciseComponent extends LoadingPage implements OnInit{
     entries: Array<Entry>;
     answers: Array<any>;
+    score:any;
     curEntry: Entry;
     setup:boolean;
     curlangs:string;
@@ -32,6 +33,7 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     ngOnInit(){
         console.log('initializing..');
         this.setup =true;
+        this.score = -1;
     }
 
     startExercise(amount,language){
@@ -39,13 +41,13 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
         this.curlangs=language.selected;
         this.setup = false;
         this.entries=this.getEntries(amount.value);
-        this.entries.forEach((entry) => entry.translation = "");
     }
 
     getEntries(amount){
         this.entryService.getEntries(amount)
             .subscribe(
                 (entries) => {
+                    entries.forEach((entry) => entry.translation = "");
                     this.entries=entries;
                     this.curEntry = entries[0];
                     this.ready();
@@ -72,10 +74,18 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
         console.log("button stop");
         this.entryService.getScore(this.entries).subscribe(
             (res) => {
-                console.log(res);
+                this.score = res.score
+                console.log(res.score);
             },
             error => this.error = error
         );
+
+        this.curEntry = null;
+    }
+
+    startNewTest(){
+        this.score = -1;
+        this.setup = true;
     }
 
     private correctExercise(){

@@ -32,18 +32,19 @@ var ExerciseComponent = (function (_super) {
     ExerciseComponent.prototype.ngOnInit = function () {
         console.log('initializing..');
         this.setup = true;
+        this.score = -1;
     };
     ExerciseComponent.prototype.startExercise = function (amount, language) {
         this.standby();
         this.curlangs = language.selected;
         this.setup = false;
         this.entries = this.getEntries(amount.value);
-        this.entries.forEach(function (entry) { return entry.translation = ""; });
     };
     ExerciseComponent.prototype.getEntries = function (amount) {
         var _this = this;
         this.entryService.getEntries(amount)
             .subscribe(function (entries) {
+            entries.forEach(function (entry) { return entry.translation = ""; });
             _this.entries = entries;
             _this.curEntry = entries[0];
             _this.ready();
@@ -65,8 +66,14 @@ var ExerciseComponent = (function (_super) {
         var _this = this;
         console.log("button stop");
         this.entryService.getScore(this.entries).subscribe(function (res) {
-            console.log(res);
+            _this.score = res.score;
+            console.log(res.score);
         }, function (error) { return _this.error = error; });
+        this.curEntry = null;
+    };
+    ExerciseComponent.prototype.startNewTest = function () {
+        this.score = -1;
+        this.setup = true;
     };
     ExerciseComponent.prototype.correctExercise = function () {
     };
