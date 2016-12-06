@@ -26,7 +26,7 @@ var ExerciseComponent = (function (_super) {
         this.lenght = 10;
         this.count = 0;
         this.i = 0;
-        this.answers = [];
+        this.loggedIn = true;
         this.ready();
     }
     ;
@@ -51,19 +51,20 @@ var ExerciseComponent = (function (_super) {
         }, function (error) { return _this.error = error; });
     };
     ExerciseComponent.prototype.next = function (answer) {
-        if (this.count < this.entries.length) {
-            this.count++;
-            this.answers.push(answer);
+        this.count++;
+        if (this.entries[this.count]) {
+            this.entries[this.count - 1].translation = answer;
             this.curEntry = this.entries[this.count];
         }
         else {
-            alert('test completed');
+            console.log('test completed');
+            this.getScore();
         }
     };
     ExerciseComponent.prototype.getScore = function () {
         var _this = this;
         console.log("button stop");
-        this.entryService.getScore(this.answers).subscribe(function (res) {
+        this.entryService.getScore(this.entries).subscribe(function (res) {
             console.log(res);
         }, function (error) { return _this.error = error; });
     };

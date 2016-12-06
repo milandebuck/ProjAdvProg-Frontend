@@ -19,15 +19,16 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     setup:boolean;
     curlangs:string;
     languages=["NL-EN","EN-NL"];
+    loggedIn:boolean;
     private error;
     constructor( private entryService:EntryService){
         super(true);
+        this.loggedIn = true;
         this.ready();
     };
     private lenght = 10;
     count = 0;
     i = 0;
-    private answers = [];
     ngOnInit(){
         console.log('initializing..');
         this.setup =true;
@@ -54,20 +55,21 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     }
 
     next(answer){
-        if(this.count < this.entries.length){
-            this.count ++;
-            this.answers.push(answer);
+        this.count ++;
+        if(this.entries[this.count]){
+            this.entries[this.count-1].translation = answer
             this.curEntry = this.entries[this.count];
         }
         else {
-            alert('test completed');
+            console.log('test completed');
+            this.getScore();
         }
 
     }
 
     getScore(){
         console.log("button stop");
-        this.entryService.getScore(this.answers).subscribe(
+        this.entryService.getScore(this.entries).subscribe(
             (res) => {
                 console.log(res);
             },

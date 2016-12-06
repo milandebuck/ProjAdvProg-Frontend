@@ -2,12 +2,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
+import {CookieService} from  './cookie.service';
+
 @Injectable()
 export class UserService {
     private loggedIn = false;
 
-    constructor(private http: Http) {
-        this.loggedIn = !!localStorage.getItem('auth_token');
+    constructor(private http: Http, private  cookieService:CookieService) {
+        this.loggedIn = !!this.cookieService.getCookie("auth_token");
     }
 
     login(username, password) {
@@ -21,7 +23,7 @@ export class UserService {
             .map((res) => {
                 if (!res.status) {
                     console.log("login succesfull");
-                    localStorage.setItem('auth_token', res.token);
+                    this.cookieService.setCookie(res.token);
                     this.loggedIn = true;
                     return true
                 }
@@ -30,11 +32,13 @@ export class UserService {
     }
 
     logout() {
-        localStorage.removeItem('auth_token');
+        this.cookieService.deleteCookie();
+        console.log(this.cookieService.getCookie('auth_token'))
         this.loggedIn = false;
     }
 
     isLoggedIn() {
         return this.loggedIn;
     }
+
 }

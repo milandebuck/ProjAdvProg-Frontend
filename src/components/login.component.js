@@ -28,6 +28,8 @@ var LoginComponent = (function (_super) {
         this.router = router;
         this.LoggedIn = this.userService.isLoggedIn();
         this.ready();
+        if (this.LoggedIn)
+            this.router.navigate(['Exercise']);
     }
     LoginComponent.prototype.onSubmit = function (event, email, password) {
         var _this = this;

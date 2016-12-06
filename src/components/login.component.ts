@@ -22,6 +22,7 @@ export class LoginComponent extends LoadingPage{
     constructor(private userService: UserService, private router: Router) {
         super(true);
         this.ready();
+        if(this.LoggedIn)this.router.navigate(['Exercise']);
     }
 
     onSubmit(event,email, password) {
