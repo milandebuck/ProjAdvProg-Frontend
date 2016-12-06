@@ -11,17 +11,19 @@ import { UserService } from '../services/user.service';
 })
 export class AppComponent implements OnInit{
     loggedIn:boolean;
+    username:string;
 
     constructor(private  userService : UserService,private router: Router){}
 
     ngOnInit(){
         console.log('logincheck');
         this.loggedIn =this.userService.isLoggedIn();
-
+        this.username = localStorage.getItem('username');
     }
 
     logout(){
         this.userService.logout();
+        localStorage.removeItem('username');
         this.router.navigate(['login']);
     }
 }

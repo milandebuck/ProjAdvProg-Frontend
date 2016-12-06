@@ -20,9 +20,11 @@ var AppComponent = (function () {
     AppComponent.prototype.ngOnInit = function () {
         console.log('logincheck');
         this.loggedIn = this.userService.isLoggedIn();
+        this.username = localStorage.getItem('username');
     };
     AppComponent.prototype.logout = function () {
         this.userService.logout();
+        localStorage.removeItem('username');
         this.router.navigate(['login']);
     };
     AppComponent = __decorate([

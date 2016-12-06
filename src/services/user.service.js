@@ -31,6 +31,7 @@ var UserService = (function () {
             if (!res.status) {
                 console.log("login succesfull");
                 _this.cookieService.setCookie(res.token);
+                localStorage.setItem('username', username);
                 _this.loggedIn = true;
                 return true;
             }
