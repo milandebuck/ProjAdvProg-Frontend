@@ -14,11 +14,11 @@ export class EntryService {
         //create auth header
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization',this.cookieService.getCookie('auth_token'));
 
         //routeparams
         let params = new URLSearchParams();
         params.append('amount',count);
+        params.append('token', this.cookieService.getCookie('auth_token'));
 
         //create options
         let options = new RequestOptions({
@@ -46,7 +46,7 @@ export class EntryService {
             search: params
         });
         //post answers and return score
-            return this.http.post('http://teammartini.herokuapp.com/Excercise', JSON.stringify(answers), options)
+            return this.http.post('http://teammartini.herokuapp.com/Exercise', JSON.stringify(answers), options)
                 .map(this.extractData)
                 .catch(this.handleError);
     }

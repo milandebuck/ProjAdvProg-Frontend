@@ -1,1 +1,1 @@
-{"version":3,"file":"Entry.js","sourceRoot":"","sources":["Entry.ts"],"names":[],"mappings":";AAAA;IAAA;IAKA,CAAC;IAAD,YAAC;AAAD,CAAC,AALD,IAKC;AALY,aAAK,QAKjB,CAAA"}
+{"version":3,"file":"Entry.js","sourceRoot":"","sources":["Entry.ts"],"names":["Entry","Entry.constructor"],"mappings":"AAAA;IAAAA;IAKAC,CAACA;IAADD,YAACA;AAADA,CAACA,AALD,IAKC;AALY,aAAK,QAKjB,CAAA"}
