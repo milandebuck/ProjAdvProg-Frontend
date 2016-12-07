@@ -37,7 +37,7 @@ var EntryService = (function () {
     EntryService.prototype.getScore = function (answers) {
         //add headers
         var headers = new http_1.Headers();
-        headers.append('Content-Type', 'text/plain');
+        headers.append('Content-Type', 'application/json');
         //routeparams
         var params = new http_1.URLSearchParams();
         params.append('token', this.cookieService.getCookie('auth_token'));
