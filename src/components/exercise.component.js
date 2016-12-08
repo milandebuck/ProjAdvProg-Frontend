@@ -65,7 +65,8 @@ var ExerciseComponent = (function (_super) {
     };
     ExerciseComponent.prototype.getScore = function () {
         var _this = this;
-        console.log("button stop");
+        console.log("end of test");
+        console.log(this.entries);
         this.entryService.getScore(this.entries).subscribe(function (res) {
             _this.score = res.score;
             console.log(res.score);
@@ -74,9 +75,8 @@ var ExerciseComponent = (function (_super) {
     };
     ExerciseComponent.prototype.startNewTest = function () {
         this.score = -1;
+        this.count = 0;
         this.setup = true;
-    };
-    ExerciseComponent.prototype.correctExercise = function () {
     };
     ExerciseComponent = __decorate([
         core_1.Component({

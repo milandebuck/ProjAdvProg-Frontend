@@ -62,6 +62,7 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
         if(this.entries[this.count]){
             this.entries[this.count-1].translation = answer;
             this.curEntry = this.entries[this.count];
+
         }
         else {
             console.log('test completed');
@@ -71,10 +72,11 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     }
 
     getScore(){
-        console.log("button stop");
+        console.log("end of test");
+        console.log(this.entries);
         this.entryService.getScore(this.entries).subscribe(
             (res) => {
-                this.score = res.score
+                this.score = res.score;
                 console.log(res.score);
             },
             error => this.error = error
@@ -85,10 +87,7 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
 
     startNewTest(){
         this.score = -1;
+        this.count= 0 ;
         this.setup = true;
-    }
-
-    private correctExercise(){
-
     }
 }
