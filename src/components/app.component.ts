@@ -21,6 +21,11 @@ export class AppComponent implements OnInit{
         this.username = localStorage.getItem('username');
     }
 
+    userStatus(l : boolean){
+        this.loggedIn=l;
+        console.log(this.loggedIn)
+    }
+
     logout(){
         this.userService.logout();
         localStorage.removeItem('username');

@@ -1,5 +1,5 @@
 // exercise.component.ts
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit,EventEmitter,Output } from '@angular/core';
 
 import { Entry } from './../models/Entry';
 
@@ -20,11 +20,10 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     setup:boolean;
     curlangs:string;
     languages=["NL-EN","EN-NL"];
-    loggedIn:boolean;
     private error;
+    @Output() userStatus = new EventEmitter<boolean>();
     constructor( private entryService:EntryService){
         super(true);
-        this.loggedIn = true;
         this.ready();
     };
     private lenght = 10;
@@ -32,6 +31,7 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     i = 0;
     ngOnInit(){
         console.log('initializing..');
+        this.userStatus.emit(true);
         this.setup =true;
         this.score = -1;
     }

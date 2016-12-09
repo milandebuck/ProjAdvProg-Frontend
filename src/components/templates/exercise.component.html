@@ -11,7 +11,7 @@
                     <section class="startformElement">
                         <label id="labelLanguages" class="labelLanguages" for="languages">What do you want to practise?</label>
                         <select #ln [(ngModel)]="selectedValue" name="languages" id="languages">
-                            <option *ngFor="let l of languages" [ngValue]="{{l}}">{{l}}</option>
+                            <option *ngFor="let l of languages" [ngValue]="l">{{l}}</option>
                         </select>
                     </section>
                     <button (click)="startExercise(length,ln)" class="startBtn">Start exercise</button>
