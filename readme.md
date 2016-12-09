@@ -6,7 +6,7 @@ App to practice translations
  
 #### Angular frontend
 
-make sure you have ``` npm ``` installed
+make sure you have ` npm ` installed
 
 install dependencies
 
@@ -26,5 +26,5 @@ $ npm start
 ```
 
 ### Collaborators
-    -Milan De Buck
-    -Domien Herdewel
+- Milan De Buck
+- Domien Herdewel
