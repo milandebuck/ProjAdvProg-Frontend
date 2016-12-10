@@ -22,15 +22,16 @@ var ExerciseComponent = (function (_super) {
         _super.call(this, true);
         this.entryService = entryService;
         this.languages = ["NL-EN", "EN-NL"];
+        this.userStatus = new core_1.EventEmitter();
         this.lenght = 10;
         this.count = 0;
         this.i = 0;
-        this.loggedIn = true;
         this.ready();
     }
     ;
     ExerciseComponent.prototype.ngOnInit = function () {
         console.log('initializing..');
+        this.userStatus.emit(true);
         this.setup = true;
         this.score = -1;
     };
@@ -64,7 +65,8 @@ var ExerciseComponent = (function (_super) {
     };
     ExerciseComponent.prototype.getScore = function () {
         var _this = this;
-        console.log("button stop");
+        console.log("end of test");
+        console.log(this.entries);
         this.entryService.getScore(this.entries).subscribe(function (res) {
             _this.score = res.score;
             console.log(res.score);
@@ -73,10 +75,13 @@ var ExerciseComponent = (function (_super) {
     };
     ExerciseComponent.prototype.startNewTest = function () {
         this.score = -1;
+        this.count = 0;
         this.setup = true;
     };
-    ExerciseComponent.prototype.correctExercise = function () {
-    };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], ExerciseComponent.prototype, "userStatus", void 0);
     ExerciseComponent = __decorate([
         core_1.Component({
             selector: 'exercise',

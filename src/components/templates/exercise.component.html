@@ -10,8 +10,8 @@
                     </section>
                     <section class="startformElement">
                         <label id="labelLanguages" class="labelLanguages" for="languages">What do you want to practise?</label>
-                        <select #ln name="languages" id="languages">
-                            <option *ngFor="let l of languages" value="{{l}}">{{l}}</option>
+                        <select #ln [(ngModel)]="selectedValue" name="languages" id="languages">
+                            <option *ngFor="let l of languages" [ngValue]="l">{{l}}</option>
                         </select>
                     </section>
                     <button (click)="startExercise(length,ln)" class="startBtn">Start exercise</button>
@@ -26,12 +26,13 @@
                     </section>
                     <section class="rightForm formElement">
                         <label id="labelvertaling" for="inputvertaling">{{curEntry.languages[1]}}</label>
-                        <input #answer type="text" class="form-control" id="inputvertaling" placeholder="Answer">
+                        <input #answer type="text" class="form-control" id="inputvertaling" placeholder="Answer" value="{{curEntry.translation}}">
                     </section>
                     <p class="progress" id="progress">Progress: <span>{{ count }}</span>/{{entries.length}}</p>
-                    <button (click)="next(answer)" class="nextBtn">Next</button>
+                    <button (click)="next(answer.value)"  (keyup.enter)="next(answer.value)" id="btn" class="nextBtn">Next</button>
                 </div>
                 <button (click)="getScore()" class="resetBtn">Stop test</button>
+
             </div>
             <div *ngIf="score != -1">
                 <h2>Your score is: {{score}}</h2>

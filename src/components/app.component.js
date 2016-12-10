@@ -21,6 +21,10 @@ var AppComponent = (function () {
         this.loggedIn = this.userService.isLoggedIn();
         this.username = localStorage.getItem('username');
     };
+    AppComponent.prototype.userStatus = function (l) {
+        this.loggedIn = l;
+        console.log(this.loggedIn);
+    };
     AppComponent.prototype.logout = function () {
         this.userService.logout();
         localStorage.removeItem('username');

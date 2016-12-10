@@ -1,5 +1,5 @@
 // login.component.ts
-import { Component } from '@angular/core';
+import { Component,EventEmitter,OnInit,Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 //services
@@ -10,6 +10,7 @@ import {LoadingIndicator, LoadingPage} from './loading-indicator/loading-indicat
 
 //model
 import { User } from './../models/User';
+import {OnInit} from "@angular/core";
 
 @Component({
     selector: 'login',
@@ -17,11 +18,16 @@ import { User } from './../models/User';
     styles: [ require('./styles/login.component.css') ],
     directives: [LoadingIndicator]
 })
-export class LoginComponent extends LoadingPage{
+export class LoginComponent extends LoadingPage implements OnInit{
     LoggedIn = this.userService.isLoggedIn();
+    @Output() userStatus = new EventEmitter<boolean>();
     constructor(private userService: UserService, private router: Router) {
         super(true);
         this.ready();
+    }
+
+    ngOnInit(){
+        this.userStatus.emit(false);
         if(this.LoggedIn)this.router.navigate(['Exercise']);
     }
 

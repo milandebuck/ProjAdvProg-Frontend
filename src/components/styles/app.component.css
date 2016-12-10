@@ -57,8 +57,19 @@ nav{
     background-color: #607D8B;
 }
 .wrapper{
+    position: relative;
     width:80rem;
     margin: 0 auto;
+}
+.centerwrapper{
+    min-height:40rem;
+}
+.center{
+    width: 80rem;
+    height:40rem;
+    margin: 0 auto  ;
+    position: absolute;
+    top: 40%;
 }
 .outerWrapper{
     min-height: 20rem;
@@ -138,6 +149,8 @@ nav{
 
 /*--- Footer ---*/
 .footer{
+    position: absolute;
+    bottom: 0;
     display: block;
     float: left;
 }
