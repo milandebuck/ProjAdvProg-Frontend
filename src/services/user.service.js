@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,6 +17,7 @@ var UserService = (function () {
         this.http = http;
         this.cookieService = cookieService;
         this.loggedIn = false;
+        console.log(this.cookieService.getCookie("auth_token"));
         this.loggedIn = !!this.cookieService.getCookie("auth_token");
     }
     UserService.prototype.login = function (username, password) {
@@ -76,7 +76,7 @@ var UserService = (function () {
             .catch(this.handleError);
     };
     UserService.prototype.logout = function () {
-        this.cookieService.deleteCookie();
+        this.cookieService.deleteCookie("auth_token");
         console.log("cookie: " + this.cookieService.getCookie('auth_token'));
         this.loggedIn = false;
     };
@@ -107,6 +107,6 @@ var UserService = (function () {
         __metadata('design:paramtypes', [http_1.Http, cookie_service_1.CookieService])
     ], UserService);
     return UserService;
-}());
+})();
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map
