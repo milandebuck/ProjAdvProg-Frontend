@@ -7,4 +7,5 @@ __export(require('./login.component'));
 __export(require('./exercise.component'));
 __export(require('./loading-indicator'));
 __export(require('./register.componet'));
+__export(require('./dashboard.componet'));
 //# sourceMappingURL=index.js.map

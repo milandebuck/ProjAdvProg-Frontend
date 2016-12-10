@@ -1,0 +1,40 @@
+
+<div class="contentWrapper">
+    <h2>Login</h2>
+    <div [ngSwitch]="loading">
+        <div *ngSwitchCase="false">
+            <h2>{{username}}'s profile</h2>
+            <div class="chart">
+                <h3>Progress</h3>
+                <canvas baseChart
+                        [datasets]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [legend]="lineChartLegend"
+                        [chartType]="lineChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)">
+
+                </canvas>
+            </div>
+            <div class="tiles">
+                <ul>
+                    <li *ngFor="let item of items">
+                        <h3>{{item.languages}}</h3>
+                        <div>
+                            <ul>
+                                <li>Completed <span>{{item.total}}</span></li>
+                                <li>Avarage <span>{{item.avarage}}</span></li>
+                            </ul>
+                        </div>
+                        <button (click)="startNew(item.languages)">Start new test</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div *ngSwitchCase="true" class="loadingwrapper">
+            <loading-indicator></loading-indicator>
+        </div>
+    </div>
+
+</div>

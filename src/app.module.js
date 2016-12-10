@@ -13,6 +13,7 @@ var http_1 = require('@angular/http');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
+var ng2_charts_1 = require('ng2-charts/ng2-charts');
 var components_1 = require('./components');
 var app_routes_1 = require('./app.routes');
 //services
@@ -20,20 +21,27 @@ var user_service_1 = require('./services/user.service');
 var logged_in_guard_1 = require('./services/logged-in.guard');
 var entry_service_1 = require('./services/entry.service');
 var cookie_service_1 = require("./services/cookie.service");
-var register_componet_1 = require("./components/register.componet");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             bootstrap: [components_1.AppComponent],
-            declarations: [components_1.AppComponent, components_1.LoginComponent, components_1.ExerciseComponent, components_1.LoadingIndicator, register_componet_1.RegisterComponent],
+            declarations: [
+                components_1.AppComponent,
+                components_1.LoginComponent,
+                components_1.ExerciseComponent,
+                components_1.LoadingIndicator,
+                components_1.RegisterComponent,
+                components_1.DashboardComponent
+            ],
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpModule,
                 forms_1.FormsModule,
                 router_1.RouterModule.forRoot(app_routes_1.routes),
-                http_1.JsonpModule
+                http_1.JsonpModule,
+                ng2_charts_1.ChartsModule
             ],
             providers: [
                 user_service_1.UserService,
