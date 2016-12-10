@@ -20,13 +20,14 @@ var user_service_1 = require('./services/user.service');
 var logged_in_guard_1 = require('./services/logged-in.guard');
 var entry_service_1 = require('./services/entry.service');
 var cookie_service_1 = require("./services/cookie.service");
+var register_componet_1 = require("./components/register.componet");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             bootstrap: [components_1.AppComponent],
-            declarations: [components_1.AppComponent, components_1.LoginComponent, components_1.ExerciseComponent, components_1.LoadingIndicator],
+            declarations: [components_1.AppComponent, components_1.LoginComponent, components_1.ExerciseComponent, components_1.LoadingIndicator, register_componet_1.RegisterComponent],
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpModule,

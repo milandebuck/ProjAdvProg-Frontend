@@ -1,13 +1,14 @@
 
 <div class="contentWrapper">
-    <h2>Login</h2>
+    <h2>Register</h2>
     <div [ngSwitch]="loading">
         <div *ngSwitchCase="false">
             <div ngForm class="innerForm">
                 <input type="text" #username class="form-control" id="username" placeholder="Username">
                 <input type="password" #password class="form-control" id="password" placeholder="Password">
-                <button (click)="onSubmit($event,username.value,password.value)" class="loginBtn">Login</button>
-                <a [routerLink]="['/Register']">If you don't have an account signup now</a>
+                <input type="password" #confirmpass class="form-control" id="confirmpass" placeholder="Confirm Password">
+                <button (click)="onSubmit($event,username.value,password.value,confirmpass.value)" class="loginBtn">Register</button>
+                <a [routerLink]="['/Login']">If you already have an account login.</a>
             </div>
         </div>
         <div *ngSwitchCase="true" class="loadingwrapper">

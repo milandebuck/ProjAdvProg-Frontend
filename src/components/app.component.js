@@ -29,7 +29,7 @@ var AppComponent = (function () {
     AppComponent.prototype.logout = function () {
         this.userService.logout();
         localStorage.removeItem('username');
-        this.router.navigate(['login']);
+        this.router.navigate(['Login']);
     };
     AppComponent = __decorate([
         core_1.Component({

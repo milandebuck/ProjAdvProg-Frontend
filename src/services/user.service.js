@@ -38,6 +38,25 @@ var UserService = (function () {
             return false;
         });
     };
+    UserService.prototype.register = function (username, password, confirmpass) {
+        var _this = this;
+        console.log("registering");
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http
+            .post('http://teammartini.herokuapp.com/register', JSON.stringify({ username: username, password: password, confirmpass: confirmpass }), { headers: headers })
+            .map(function (res) { return res.json(); })
+            .map(function (res) {
+            if (!res.status) {
+                console.log("registration succesfull");
+                _this.cookieService.setCookie(res.token);
+                localStorage.setItem('username', username);
+                _this.loggedIn = true;
+                return true;
+            }
+            return false;
+        });
+    };
     UserService.prototype.logout = function () {
         this.cookieService.deleteCookie();
         console.log("cookie: " + this.cookieService.getCookie('auth_token'));

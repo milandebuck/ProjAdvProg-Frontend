@@ -32,6 +32,27 @@ export class UserService {
             });
     }
 
+    register(username,password,confirmpass){
+        console.log("registering");
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return this.http
+            .post('http://teammartini.herokuapp.com/register', JSON.stringify({username, password,confirmpass}), {headers})
+            .map(res => res.json())
+            .map((res) => {
+                if (!res.status) {
+                    console.log("registration succesfull");
+                    this.cookieService.setCookie(res.token);
+                    localStorage.setItem('username',username);
+                    this.loggedIn = true;
+                    return true
+                }
+                return false;
+            });
+
+    }
+
     logout() {
         this.cookieService.deleteCookie();
         console.log("cookie: " + this.cookieService.getCookie('auth_token'));
