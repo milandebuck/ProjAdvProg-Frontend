@@ -16,6 +16,7 @@ var UserService = (function () {
         this.http = http;
         this.cookieService = cookieService;
         this.loggedIn = false;
+        console.log(this.cookieService.getCookie("auth_token"));
         this.loggedIn = !!this.cookieService.getCookie("auth_token");
     }
     UserService.prototype.login = function (username, password) {
@@ -38,7 +39,7 @@ var UserService = (function () {
         });
     };
     UserService.prototype.logout = function () {
-        this.cookieService.deleteCookie();
+        this.cookieService.deleteCookie("auth_token");
         console.log("cookie: " + this.cookieService.getCookie('auth_token'));
         this.loggedIn = false;
     };

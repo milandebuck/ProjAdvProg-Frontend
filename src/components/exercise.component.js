@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -92,6 +93,6 @@ var ExerciseComponent = (function (_super) {
         __metadata('design:paramtypes', [entry_service_1.EntryService])
     ], ExerciseComponent);
     return ExerciseComponent;
-})(loading_indicator_1.LoadingPage);
+}(loading_indicator_1.LoadingPage));
 exports.ExerciseComponent = ExerciseComponent;
 //# sourceMappingURL=exercise.component.js.map

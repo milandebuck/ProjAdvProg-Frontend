@@ -57,7 +57,7 @@ nav{
     background-color: #607D8B;
 }
 .wrapper{
-    position: relative;
+    height: 40rem;
     width:80rem;
     margin: 0 auto;
 }
@@ -149,8 +149,6 @@ nav{
 
 /*--- Footer ---*/
 .footer{
-    position: absolute;
-    bottom: 0;
     display: block;
     float: left;
 }

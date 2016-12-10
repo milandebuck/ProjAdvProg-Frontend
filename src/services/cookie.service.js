@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -34,14 +35,15 @@ var CookieService = (function () {
         }
         return "";
     };
-    CookieService.prototype.deleteCookie = function () {
-        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    CookieService.prototype.deleteCookie = function (cname) {
+        document.cookie = cname + "=''" + ";expires=-1;";
+        //document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     };
     CookieService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
     ], CookieService);
     return CookieService;
-})();
+}());
 exports.CookieService = CookieService;
 //# sourceMappingURL=cookie.service.js.map
