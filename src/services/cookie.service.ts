@@ -30,7 +30,8 @@ export class CookieService {
     }
 
     deleteCookie(cname){
-        document.cookie = cname + "=''" + ";expires=-1;";
-        //document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+        let d=new Date();
+        d.setTime(-1);
+        document.cookie= cname + "=''" + ";expires="+d.toUTCString()+";";
     }
 }

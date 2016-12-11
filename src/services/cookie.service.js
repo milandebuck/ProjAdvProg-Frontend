@@ -36,8 +36,9 @@ var CookieService = (function () {
         return "";
     };
     CookieService.prototype.deleteCookie = function (cname) {
-        document.cookie = cname + "=''" + ";expires=-1;";
-        //document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+        var d = new Date();
+        d.setTime(-1);
+        document.cookie = cname + "=''" + ";expires=" + d.toUTCString() + ";";
     };
     CookieService = __decorate([
         core_1.Injectable(), 

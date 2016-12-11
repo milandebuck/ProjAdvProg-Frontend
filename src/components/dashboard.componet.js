@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,12 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var score_service_1 = require('../services/score.service');
+var user_service_1 = require('../services/user.service');
 var DashboardComponent = (function () {
-    function DashboardComponent(scoreService) {
+    function DashboardComponent(scoreService, userService) {
         this.scoreService = scoreService;
+        this.userService = userService;
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        console.log(this.userService.isLoggedIn());
         this.scoreService.getScores().subscribe(function (data) {
             console.log(data);
         }, function (error) { return _this.error = error; });
@@ -26,9 +28,9 @@ var DashboardComponent = (function () {
             template: require('./templates/dashboard.component.html'),
             styles: [require('./styles/app.component.css')]
         }), 
-        __metadata('design:paramtypes', [score_service_1.ScoreService])
+        __metadata('design:paramtypes', [score_service_1.ScoreService, user_service_1.UserService])
     ], DashboardComponent);
     return DashboardComponent;
-}());
+})();
 exports.DashboardComponent = DashboardComponent;
 //# sourceMappingURL=dashboard.componet.js.map

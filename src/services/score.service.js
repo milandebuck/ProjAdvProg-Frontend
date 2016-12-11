@@ -32,7 +32,7 @@ var ScoreService = (function () {
             search: params
         });
         return this.http
-            .get('http://teamartini.herokuapp.com/GetUserResults', options)
+            .get('http://teammartini.herokuapp.com/GetUserResults', options)
             .map(this.extractService.extractData)
             .catch(this.extractService.handleError);
     };
