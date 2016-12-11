@@ -1,7 +1,7 @@
 import { Component ,OnInit} from '@angular/core';
 
 
-import { UserService } from '../services/user.service';
+import { ScoreService } from '../services/score.service';
 
 
 @Component({
@@ -11,15 +11,15 @@ import { UserService } from '../services/user.service';
 })
 export class DashboardComponent implements OnInit{
     username:string;
-    error:string
-
-    constructor(private  userService : UserService){}
+    error:string;
+    items:Array<any>;
+    constructor(private  scoreService : ScoreService){}
 
     ngOnInit(){
-        this.userService.getData().subscribe(
+        this.scoreService.getScores().subscribe(
             (data)=> {
-
-            }
+                console.log(data);
+            },
             error => this.error=error
         )
     }

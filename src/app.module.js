@@ -17,10 +17,7 @@ var ng2_charts_1 = require('ng2-charts/ng2-charts');
 var components_1 = require('./components');
 var app_routes_1 = require('./app.routes');
 //services
-var user_service_1 = require('./services/user.service');
-var logged_in_guard_1 = require('./services/logged-in.guard');
-var entry_service_1 = require('./services/entry.service');
-var cookie_service_1 = require("./services/cookie.service");
+var services_1 = require('./services');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -44,10 +41,12 @@ var AppModule = (function () {
                 ng2_charts_1.ChartsModule
             ],
             providers: [
-                user_service_1.UserService,
-                logged_in_guard_1.LoggedInGuard,
-                entry_service_1.EntryService,
-                cookie_service_1.CookieService
+                services_1.UserService,
+                services_1.LoggedInGuard,
+                services_1.EntryService,
+                services_1.CookieService,
+                services_1.ExtractService,
+                services_1.ScoreService
             ]
         }), 
         __metadata('design:paramtypes', [])

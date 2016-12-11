@@ -8,35 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// user.service.ts
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var cookie_service_1 = require('./cookie.service');
 var extract_service_1 = require('./extract.service');
-var EntryService = (function () {
-    function EntryService(http, cookieService, extractService) {
+var ScoreService = (function () {
+    function ScoreService(http, cookieService, extractService) {
         this.http = http;
         this.cookieService = cookieService;
         this.extractService = extractService;
     }
-    EntryService.prototype.getEntries = function (count) {
-        //create auth header
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        //routeparams
-        var params = new http_1.URLSearchParams();
-        params.append('amount', count);
-        params.append('token', this.cookieService.getCookie('auth_token'));
-        //create options
-        var options = new http_1.RequestOptions({
-            headers: headers,
-            search: params
-        });
-        return this.http.get("http://teammartini.herokuapp.com/Exercise", options)
-            .map(this.extractService.extractData)
-            .catch(this.extractService.handleError);
-    };
-    EntryService.prototype.getScore = function (answers) {
-        //add headers
+    ScoreService.prototype.getScores = function () {
+        console.log("getting data");
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         //routeparams
@@ -47,16 +31,16 @@ var EntryService = (function () {
             headers: headers,
             search: params
         });
-        //post answers and return score
-        return this.http.post('http://teammartini.herokuapp.com/Exercise', JSON.stringify(answers), options)
+        return this.http
+            .get('http://teamartini.herokuapp.com/GetUserResults', options)
             .map(this.extractService.extractData)
             .catch(this.extractService.handleError);
     };
-    EntryService = __decorate([
+    ScoreService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, cookie_service_1.CookieService, extract_service_1.ExtractService])
-    ], EntryService);
-    return EntryService;
+    ], ScoreService);
+    return ScoreService;
 }());
-exports.EntryService = EntryService;
-//# sourceMappingURL=entry.service.js.map
+exports.ScoreService = ScoreService;
+//# sourceMappingURL=score.service.js.map

@@ -1,7 +1,6 @@
 // user.service.ts
 import { Injectable } from '@angular/core';
-import { Http, Headers,URLSearchParams,RequestOptions,Response } from '@angular/http';
-import { Observable }     from 'rxjs/Observable';
+import { Http, Headers } from '@angular/http';
 
 import {CookieService} from  './cookie.service';
 
@@ -55,24 +54,6 @@ export class UserService {
 
     }
 
-    getData(){
-        console.log("getting data")
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        //routeparams
-        let params = new URLSearchParams();
-        params.append('token',this.cookieService.getCookie('auth_token'));
-
-        //options
-        let options = new RequestOptions({
-            headers: headers,
-            search: params
-        });
-        return this.http
-            .get('http://teamartini.herokuapp.com/routename',options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }
 
     logout() {
         this.cookieService.deleteCookie("auth_token");
@@ -83,26 +64,6 @@ export class UserService {
 
     isLoggedIn() {
         return this.loggedIn;
-    }
-
-    private extractData(res: Response) {
-        console.log(res);
-        let body = res.json();
-        return body.data || { };
-    }
-
-    private handleError (error: Response | any) {
-        // In a real world app, we might use a remote logging infrastructure
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Observable.throw(errMsg);
     }
 
 }

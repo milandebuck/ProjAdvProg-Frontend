@@ -2,13 +2,12 @@ import { Injectable }     from '@angular/core';
 import { Http, Response , Headers,RequestOptions,URLSearchParams} from '@angular/http';
 import { Entry } from './../models/Entry';
 import { Observable }     from 'rxjs/Observable';
-import {filter} from "rxjs/operator/filter";
 
-import { CookieService } from './cookie.service'
-import {count} from "rxjs/operator/count";
+import { CookieService } from './cookie.service';
+import { ExtractService } from './extract.service';
 @Injectable()
 export class EntryService {
-    constructor (private http: Http, private cookieService : CookieService) {}
+    constructor (private http: Http, private cookieService : CookieService, private  extractService: ExtractService) {}
 
     getEntries (count): Observable<Entry[]> {
         //create auth header
@@ -27,8 +26,8 @@ export class EntryService {
         });
 
         return this.http.get("http://teammartini.herokuapp.com/Exercise",options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(this.extractService.extractData)
+            .catch(this.extractService.handleError);
     }
 
     getScore(answers){
@@ -47,27 +46,8 @@ export class EntryService {
         });
         //post answers and return score
             return this.http.post('http://teammartini.herokuapp.com/Exercise', JSON.stringify(answers), options)
-                .map(this.extractData)
-                .catch(this.handleError);
+                .map(this.extractService.extractData)
+                .catch(this.extractService.handleError);
     }
 
-    private extractData(res: Response) {
-        console.log(res);
-        let body = res.json();
-        return body.data || { };
-    }
-
-    private handleError (error: Response | any) {
-        // In a real world app, we might use a remote logging infrastructure
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Observable.throw(errMsg);
-    }
 }
