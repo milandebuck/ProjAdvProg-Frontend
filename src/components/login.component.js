@@ -33,7 +33,7 @@ var LoginComponent = (function (_super) {
     LoginComponent.prototype.ngOnInit = function () {
         this.userStatus.emit(false);
         if (this.LoggedIn)
-            this.router.navigate(['Exercise']);
+            this.router.navigate(['Dashboard']);
     };
     LoginComponent.prototype.onSubmit = function (event, email, password) {
         var _this = this;
@@ -42,7 +42,7 @@ var LoginComponent = (function (_super) {
         console.log("submitting");
         this.userService.login(email, password).subscribe(function (result) {
             if (result) {
-                _this.router.navigate(['Exercise']);
+                _this.router.navigate(['Dashboard']);
             }
         });
     };

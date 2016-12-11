@@ -18,10 +18,14 @@ import { routes } from './app.routes';
 
 //services
 
-import { UserService } from './services/user.service';
-import { LoggedInGuard } from './services/logged-in.guard';
-import { EntryService } from './services/entry.service';
-import {CookieService} from "./services/cookie.service";
+import {
+    EntryService,
+    CookieService,
+    UserService,
+    LoggedInGuard,
+    ExtractService,
+    ScoreService
+} from './services'
 
 
 @NgModule({
@@ -46,7 +50,9 @@ import {CookieService} from "./services/cookie.service";
         UserService,
         LoggedInGuard,
         EntryService,
-        CookieService
+        CookieService,
+        ExtractService,
+        ScoreService
     ]
 })
 export class AppModule {}

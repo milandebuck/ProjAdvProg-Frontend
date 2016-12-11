@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // user.service.ts
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-var Observable_1 = require('rxjs/Observable');
 var cookie_service_1 = require('./cookie.service');
 var UserService = (function () {
     function UserService(http, cookieService) {
@@ -59,23 +58,6 @@ var UserService = (function () {
             return false;
         });
     };
-    UserService.prototype.getData = function () {
-        console.log("getting data");
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        //routeparams
-        var params = new http_1.URLSearchParams();
-        params.append('token', this.cookieService.getCookie('auth_token'));
-        //options
-        var options = new http_1.RequestOptions({
-            headers: headers,
-            search: params
-        });
-        return this.http
-            .get('http://teamartini.herokuapp.com/routename', options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
     UserService.prototype.logout = function () {
         this.cookieService.deleteCookie("auth_token");
         console.log("cookie: " + this.cookieService.getCookie('auth_token'));
@@ -83,25 +65,6 @@ var UserService = (function () {
     };
     UserService.prototype.isLoggedIn = function () {
         return this.loggedIn;
-    };
-    UserService.prototype.extractData = function (res) {
-        console.log(res);
-        var body = res.json();
-        return body.data || {};
-    };
-    UserService.prototype.handleError = function (error) {
-        // In a real world app, we might use a remote logging infrastructure
-        var errMsg;
-        if (error instanceof http_1.Response) {
-            var body = error.json() || '';
-            var err = body.error || JSON.stringify(body);
-            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
-        }
-        else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Observable_1.Observable.throw(errMsg);
     };
     UserService = __decorate([
         core_1.Injectable(), 

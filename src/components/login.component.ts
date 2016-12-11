@@ -28,7 +28,7 @@ export class LoginComponent extends LoadingPage implements OnInit{
 
     ngOnInit(){
         this.userStatus.emit(false);
-        if(this.LoggedIn)this.router.navigate(['Exercise']);
+        if(this.LoggedIn)this.router.navigate(['Dashboard']);
     }
 
     onSubmit(event,email, password) {
@@ -37,7 +37,7 @@ export class LoginComponent extends LoadingPage implements OnInit{
         console.log("submitting");
         this.userService.login(email, password).subscribe((result) => {
             if (result) {
-                this.router.navigate(['Exercise']);
+                this.router.navigate(['Dashboard']);
             }
         });
     }
