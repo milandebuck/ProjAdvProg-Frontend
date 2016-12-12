@@ -29,6 +29,7 @@ export class AppComponent implements OnInit{
     logout(){
         this.userService.logout();
         localStorage.removeItem('username');
+        this.loggedIn = this.userService.isLoggedIn();
         this.router.navigate(['Login']);
     }
 }
