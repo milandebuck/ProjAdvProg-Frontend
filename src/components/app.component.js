@@ -29,6 +29,7 @@ var AppComponent = (function () {
     AppComponent.prototype.logout = function () {
         this.userService.logout();
         localStorage.removeItem('username');
+        this.loggedIn = this.userService.isLoggedIn();
         this.router.navigate(['Login']);
     };
     AppComponent = __decorate([
