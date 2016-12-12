@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -16,6 +15,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // login.component.ts
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var app_component_1 = require('./app.component');
 //services
 var user_service_1 = require('./../services/user.service');
 //loading-indicator
@@ -42,6 +42,7 @@ var LoginComponent = (function (_super) {
         console.log("submitting");
         this.userService.login(email, password).subscribe(function (result) {
             if (result) {
+                app_component_1.App.ngOnInit();
                 _this.router.navigate(['Dashboard']);
             }
         });
@@ -60,6 +61,6 @@ var LoginComponent = (function (_super) {
         __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
-}(loading_indicator_1.LoadingPage));
+})(loading_indicator_1.LoadingPage);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

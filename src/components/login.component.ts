@@ -1,6 +1,7 @@
 // login.component.ts
 import { Component,EventEmitter,OnInit,Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { App } from './app.component'
 
 //services
 import { UserService } from './../services/user.service';
@@ -37,6 +38,7 @@ export class LoginComponent extends LoadingPage implements OnInit{
         console.log("submitting");
         this.userService.login(email, password).subscribe((result) => {
             if (result) {
+                App.ngOnInit();
                 this.router.navigate(['Dashboard']);
             }
         });
