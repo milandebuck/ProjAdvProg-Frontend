@@ -25,40 +25,62 @@ var DashboardComponent = (function (_super) {
         this.scoreService = scoreService;
         this.userService = userService;
         this.router = router;
+        this.labels = [];
+        this.ChartType = 'line';
+        this.ChartLegend = true;
+        this.username = localStorage.getItem('username');
         this.ready();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.graphdata = [];
+        this.items = [];
         console.log(this.userService.isLoggedIn());
         this.standby();
         this.scoreService.getScores().subscribe(function (data) {
-            data.forEach(function (i) {
-                var data;
-                var item;
-                item.title = i.translations;
-                item.completed = 0;
-                var total = 0;
-                var totalscore = 0;
-                i.tests.forEach(function (test) {
-                    item.completed++;
-                    total += test.max;
-                    totalscore += test.score;
-                    data.push(test.score);
-                }).then(function () {
-                    item.avarage = (totalscore / total) * 10;
-                    _this.graphdata.push(data);
-                    _this.items.push(item);
-                });
-            }).then(function () {
-                _this.ready();
-            });
+            console.log('executing');
+            _this.processData(data);
+            console.log(_this.graphdata);
+            _this.ready();
         }, function (error) { return _this.error = error; });
+    };
+    DashboardComponent.prototype.processData = function (data) {
+        var _this = this;
+        var max = 0;
+        data.map(function (i) {
+            console.log(i);
+            var data;
+            data = [];
+            var item;
+            item = {};
+            item.title = i.translations;
+            item.completed = 0;
+            var total = 0;
+            var totalscore = 0;
+            //needed for labals
+            if (i.tests.length > max)
+                max = i.tests.length;
+            //process testdata + calculate avg
+            i.tests.map(function (test) {
+                console.log('processing data');
+                item.completed++;
+                total += test.max;
+                totalscore += test.score;
+                data.push(test.score);
+            });
+            item.avarage = Math.round((totalscore / total) * 1000) / 100;
+            _this.graphdata.push({ data: data, label: item.title });
+            _this.items.push(item);
+        });
+        //fill labels array
+        while (this.labels.length < max)
+            this.labels.push(this.labels.length);
     };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'dashboard',
             template: require('./templates/dashboard.component.html'),
-            styles: [require('./styles/app.component.css')]
+            styles: [require('./styles/app.component.css'), require('./styles/dashboard.component.css')]
         }), 
         __metadata('design:paramtypes', [score_service_1.ScoreService, user_service_1.UserService, router_1.Router])
     ], DashboardComponent);
