@@ -6,6 +6,7 @@ import { UserService } from '../services/user.service';
 import {EventEmitter} from "events";
 import{ Item } from './../models/Item';
 import {LoadingPage} from "./loading-indicator/loading-indicator";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'dashboard',
@@ -17,14 +18,16 @@ export class DashboardComponent extends LoadingPage implements OnInit {
     error:string;
     items:Array<Item>;
     graphdata:Array<Array<number>>;
-    constructor(private  scoreService : ScoreService, private userService : UserService){
+    loggedIn:boolean;
+    constructor(private  scoreService : ScoreService, private userService : UserService, private router: Router){
         super(true);
         this.ready();
     }
 
     ngOnInit(){
-        this.standby();
         console.log(this.userService.isLoggedIn());
+        this.loggedIn = this.userService.isLoggedIn();
+        this.standby();
         this.scoreService.getScores().subscribe(
             (data)=> {
                 data.forEach((i) => {

@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -17,18 +16,21 @@ var core_1 = require('@angular/core');
 var score_service_1 = require('../services/score.service');
 var user_service_1 = require('../services/user.service');
 var loading_indicator_1 = require("./loading-indicator/loading-indicator");
+var router_1 = require('@angular/router');
 var DashboardComponent = (function (_super) {
     __extends(DashboardComponent, _super);
-    function DashboardComponent(scoreService, userService) {
+    function DashboardComponent(scoreService, userService, router) {
         _super.call(this, true);
         this.scoreService = scoreService;
         this.userService = userService;
+        this.router = router;
         this.ready();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.standby();
         console.log(this.userService.isLoggedIn());
+        this.loggedIn = this.userService.isLoggedIn();
+        this.standby();
         this.scoreService.getScores().subscribe(function (data) {
             data.forEach(function (i) {
                 var data;
@@ -58,9 +60,9 @@ var DashboardComponent = (function (_super) {
             template: require('./templates/dashboard.component.html'),
             styles: [require('./styles/app.component.css')]
         }), 
-        __metadata('design:paramtypes', [score_service_1.ScoreService, user_service_1.UserService])
+        __metadata('design:paramtypes', [score_service_1.ScoreService, user_service_1.UserService, router_1.Router])
     ], DashboardComponent);
     return DashboardComponent;
-}(loading_indicator_1.LoadingPage));
+})(loading_indicator_1.LoadingPage);
 exports.DashboardComponent = DashboardComponent;
 //# sourceMappingURL=dashboard.componet.js.map
