@@ -1,3 +1,9 @@
+"use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,16 +16,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var score_service_1 = require('../services/score.service');
 var user_service_1 = require('../services/user.service');
-var DashboardComponent = (function () {
+var loading_indicator_1 = require("./loading-indicator/loading-indicator");
+var DashboardComponent = (function (_super) {
+    __extends(DashboardComponent, _super);
     function DashboardComponent(scoreService, userService) {
+        _super.call(this, true);
         this.scoreService = scoreService;
         this.userService = userService;
+        this.ready();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.standby();
         console.log(this.userService.isLoggedIn());
         this.scoreService.getScores().subscribe(function (data) {
-            console.log(data);
+            data.forEach(function (i) {
+                var data;
+                var item;
+                item.title = i.translations;
+                item.completed = 0;
+                var total = 0;
+                var totalscore = 0;
+                i.tests.forEach(function (test) {
+                    item.completed++;
+                    total += test.max;
+                    totalscore += test.score;
+                    data.push(test.score);
+                }).then(function () {
+                    item.avarage = (totalscore / total) * 10;
+                    _this.graphdata.push(data);
+                    _this.items.push(item);
+                });
+            }).then(function () {
+                _this.ready();
+            });
         }, function (error) { return _this.error = error; });
     };
     DashboardComponent = __decorate([
@@ -31,6 +61,6 @@ var DashboardComponent = (function () {
         __metadata('design:paramtypes', [score_service_1.ScoreService, user_service_1.UserService])
     ], DashboardComponent);
     return DashboardComponent;
-})();
+}(loading_indicator_1.LoadingPage));
 exports.DashboardComponent = DashboardComponent;
 //# sourceMappingURL=dashboard.componet.js.map

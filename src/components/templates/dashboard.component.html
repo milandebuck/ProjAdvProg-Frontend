@@ -20,14 +20,14 @@
             <div class="tiles">
                 <ul>
                     <li *ngFor="let item of items">
-                        <h3>{{item.languages}}</h3>
+                        <h3>{{item.title}}</h3>
                         <div>
                             <ul>
-                                <li>Completed <span>{{item.total}}</span></li>
+                                <li>Completed <span>{{item.completed}}</span></li>
                                 <li>Avarage <span>{{item.avarage}}</span></li>
                             </ul>
                         </div>
-                        <button (click)="startNew(item.languages)">Start new test</button>
+                        <button (click)="startNew()">Start new test</button>
                     </li>
                 </ul>
             </div>
