@@ -42,6 +42,10 @@ export class DashboardComponent extends LoadingPage implements OnInit {
             }, error => this.error=error);
     }
 
+    startNew(){
+        this.router.navigate(['Exercise']);
+    }
+
     private processData(data){
         let max:number = 0;
         data.map((i) => {

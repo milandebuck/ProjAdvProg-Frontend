@@ -44,6 +44,9 @@ var DashboardComponent = (function (_super) {
             _this.ready();
         }, function (error) { return _this.error = error; });
     };
+    DashboardComponent.prototype.startNew = function () {
+        this.router.navigate(['Exercise']);
+    };
     DashboardComponent.prototype.processData = function (data) {
         var _this = this;
         var max = 0;
