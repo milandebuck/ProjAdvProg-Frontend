@@ -27,10 +27,12 @@ var DashboardComponent = (function (_super) {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.graphdata = [];
+        this.items = [];
         this.standby();
         console.log(this.userService.isLoggedIn());
         this.scoreService.getScores().subscribe(function (data) {
-            data.forEach(function (i) {
+            data.map(function (i) {
                 console.log('processing item');
                 var data;
                 data = [];
@@ -42,19 +44,17 @@ var DashboardComponent = (function (_super) {
                 item.completed = 0;
                 var total = 0;
                 var totalscore = 0;
-                i.tests.forEach(function (test) {
+                console.log(i.tests);
+                i.tests.map(function (test) {
                     console.log('processing data');
                     item.completed++;
                     total += test.max;
                     totalscore += test.score;
                     data.push(test.score);
-                }).then(function () {
-                    item.avarage = (totalscore / total) * 10;
-                    _this.graphdata.push(data);
-                    _this.items.push(item);
                 });
-            }).then(function () {
-                _this.ready();
+                item.avarage = (totalscore / total) * 10;
+                _this.graphdata.push(data);
+                _this.items.push(item);
             });
         }, function (error) { return _this.error = error; });
     };

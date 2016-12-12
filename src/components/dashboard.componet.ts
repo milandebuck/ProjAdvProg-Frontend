@@ -15,19 +15,21 @@ import {LoadingPage} from "./loading-indicator/loading-indicator";
 export class DashboardComponent extends LoadingPage implements OnInit {
     username:string;
     error:string;
-    items:Array<Item>;
-    graphdata:Array<Array<number>>;
+    items:Array<any>;
+    graphdata:Array<any>;
     constructor(private  scoreService : ScoreService, private userService : UserService){
         super(true);
         this.ready();
     }
 
     ngOnInit(){
+        this.graphdata=[];
+        this.items=[];
         this.standby();
         console.log(this.userService.isLoggedIn());
         this.scoreService.getScores().subscribe(
             (data)=> {
-                data.forEach((i) => {
+                data.map((i) => {
                     console.log('processing item');
                     let data:Array<number>;
                     data=[];
@@ -39,19 +41,18 @@ export class DashboardComponent extends LoadingPage implements OnInit {
                     item.completed = 0;
                     let total = 0;
                     let totalscore=0;
-                    i.tests.forEach((test) => {
+                    console.log(i.tests);
+                    i.tests.map((test) => {
                         console.log('processing data');
                         item.completed++;
                         total +=test.max;
                         totalscore += test.score;
                         data.push(test.score);
-                    }).then(() => {
-                        item.avarage=(totalscore/total)*10;
-                        this.graphdata.push(data);
-                        this.items.push(item);
-                    })
-                }).then(() => {
-                        this.ready();
+                    });
+                    item.avarage=(totalscore/total)*10;
+                    this.graphdata.push(data);
+                    this.items.push(item);
+
                 });
             },
             error => this.error=error
