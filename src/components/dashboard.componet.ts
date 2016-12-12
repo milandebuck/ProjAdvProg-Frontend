@@ -16,27 +16,16 @@ import { Router } from '@angular/router';
 export class DashboardComponent extends LoadingPage implements OnInit {
     username:string;
     error:string;
-<<<<<<< HEAD
     items:Array<any>;
     graphdata:Array<any>;
-    constructor(private  scoreService : ScoreService, private userService : UserService){
-=======
-    items:Array<Item>;
-    graphdata:Array<Array<number>>;
-    loggedIn:boolean;
     constructor(private  scoreService : ScoreService, private userService : UserService, private router: Router){
->>>>>>> f68a16e6a344d0e5c5ed9dc04fb99c28e5be1bdd
         super(true);
         this.ready();
     }
 
     ngOnInit(){
-<<<<<<< HEAD
         this.graphdata=[];
         this.items=[];
-        this.standby();
-=======
->>>>>>> f68a16e6a344d0e5c5ed9dc04fb99c28e5be1bdd
         console.log(this.userService.isLoggedIn());
         this.standby();
         this.scoreService.getScores().subscribe(
@@ -70,6 +59,7 @@ export class DashboardComponent extends LoadingPage implements OnInit {
             error => this.error=error
         )
     }
+    
 
 
 
