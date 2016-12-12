@@ -1,8 +1,54 @@
+/* Common */
+h2{
+    display: block;
+    color: #607D8B;
+    font-size: 5rem;
+    font-weight: lighter;
+    text-align: center;
+}
+h3{
+    display: block;
+    color: #607D8B;
+    font-size: 2rem;
+    font-weight: lighter;
+    text-align: center;
+}
+/* Tiles outline*/
 .tiles{
     width:100%;
 }
 .tile{
-    width: 48%;
+    width: 40%;
     padding: 0.5rem;
     display: inline-block;
+    margin: 0 auto;
+    height: 20rem;
+    background-color: #CFD8DC;
+    margin-bottom: 4rem;
+    margin-right: 2rem;
+}
+.tile:nth-child(2n){
+    margin-left: 4rem;
+}
+/* Tiles inner */
+.completed, .average{
+    display: block;
+    float: left;
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    color: #262626;
+    margin-top: 1rem;
+}
+.startBtn{
+    display: block;
+    float: right;
+    border: none;
+    background-color: #FFC107;
+    color: #ffffff;
+    width: 20rem;
+    height: 4rem;
+    font-size: 3rem;
+    font-weight: lighter;
+    margin: 1rem;
 }

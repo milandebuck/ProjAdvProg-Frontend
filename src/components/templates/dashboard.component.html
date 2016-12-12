@@ -20,11 +20,11 @@
                         <h3>{{item.title}}</h3>
                         <div>
                             <ul>
-                                <li>Completed <span>{{item.completed}}</span></li>
-                                <li>Avarage <span>{{item.avarage}}</span></li>
+                                <li class="completed">Completed <span>{{item.completed}}</span></li>
+                                <li class="average">Average <span>{{item.avarage}}</span></li>
                             </ul>
                         </div>
-                        <button (click)="startNew()">Start new test</button>
+                        <button (click)="startNew()" class="startBtn">Start new test</button>
                     </li>
                 </ul>
             </div>

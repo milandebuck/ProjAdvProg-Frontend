@@ -38,7 +38,7 @@ export class LoginComponent extends LoadingPage implements OnInit{
         console.log("submitting");
         this.userService.login(email, password).subscribe((result) => {
             if (result) {
-                App.ngOnInit();
+                //App.ngOnInit();
                 this.router.navigate(['Dashboard']);
             }
         });
