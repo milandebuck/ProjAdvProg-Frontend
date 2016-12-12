@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -29,7 +30,6 @@ var DashboardComponent = (function (_super) {
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         console.log(this.userService.isLoggedIn());
-        this.loggedIn = this.userService.isLoggedIn();
         this.standby();
         this.scoreService.getScores().subscribe(function (data) {
             data.forEach(function (i) {
@@ -63,6 +63,6 @@ var DashboardComponent = (function (_super) {
         __metadata('design:paramtypes', [score_service_1.ScoreService, user_service_1.UserService, router_1.Router])
     ], DashboardComponent);
     return DashboardComponent;
-})(loading_indicator_1.LoadingPage);
+}(loading_indicator_1.LoadingPage));
 exports.DashboardComponent = DashboardComponent;
 //# sourceMappingURL=dashboard.componet.js.map

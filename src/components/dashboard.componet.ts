@@ -26,7 +26,6 @@ export class DashboardComponent extends LoadingPage implements OnInit {
 
     ngOnInit(){
         console.log(this.userService.isLoggedIn());
-        this.loggedIn = this.userService.isLoggedIn();
         this.standby();
         this.scoreService.getScores().subscribe(
             (data)=> {

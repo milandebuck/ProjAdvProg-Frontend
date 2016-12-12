@@ -64,4 +64,8 @@ export class UserService {
         return this.loggedIn;
     }
 
+    setLoggedIn(input){
+        this.loggedIn =  input;
+    }
+
 }
