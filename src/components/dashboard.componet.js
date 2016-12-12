@@ -25,44 +25,47 @@ var DashboardComponent = (function (_super) {
         this.scoreService = scoreService;
         this.userService = userService;
         this.router = router;
+        this.init = true;
         this.ready();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
-<<<<<<< HEAD
         this.graphdata = [];
         this.items = [];
-        this.standby();
-=======
->>>>>>> f68a16e6a344d0e5c5ed9dc04fb99c28e5be1bdd
         console.log(this.userService.isLoggedIn());
         this.standby();
         this.scoreService.getScores().subscribe(function (data) {
-            data.map(function (i) {
-                console.log('processing item');
-                var data;
-                data = [];
-                console.log(data);
-                var item;
-                item = {};
-                console.log(item);
-                item.title = i.translations;
-                item.completed = 0;
-                var total = 0;
-                var totalscore = 0;
-                console.log(i.tests);
-                i.tests.map(function (test) {
-                    console.log('processing data');
-                    item.completed++;
-                    total += test.max;
-                    totalscore += test.score;
-                    data.push(test.score);
-                });
-                item.avarage = (totalscore / total) * 10;
-                _this.graphdata.push(data);
-                _this.items.push(item);
-            });
+            if (_this.init) {
+                _this.init = false;
+                console.log('executing');
+                _this.processData(data);
+                _this.ready();
+            }
         }, function (error) { return _this.error = error; });
+    };
+    DashboardComponent.prototype.processData = function (data) {
+        var _this = this;
+        data.map(function (i) {
+            console.log(i);
+            var data;
+            data = [];
+            var item;
+            item = {};
+            item.title = i.translations;
+            item.completed = 0;
+            var total = 0;
+            var totalscore = 0;
+            i.tests.map(function (test) {
+                console.log('processing data');
+                item.completed++;
+                total += test.max;
+                totalscore += test.score;
+                data.push(test.score);
+            });
+            item.avarage = (totalscore / total) * 10;
+            _this.graphdata.push(data);
+            _this.items.push(item);
+        });
     };
     DashboardComponent = __decorate([
         core_1.Component({

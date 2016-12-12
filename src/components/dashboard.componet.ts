@@ -18,6 +18,7 @@ export class DashboardComponent extends LoadingPage implements OnInit {
     error:string;
     items:Array<any>;
     graphdata:Array<any>;
+    init=true;
     constructor(private  scoreService : ScoreService, private userService : UserService, private router: Router){
         super(true);
         this.ready();
@@ -30,36 +31,40 @@ export class DashboardComponent extends LoadingPage implements OnInit {
         this.standby();
         this.scoreService.getScores().subscribe(
             (data)=> {
-                data.map((i) => {
-                    console.log('processing item');
-                    let data:Array<number>;
-                    data=[];
-                    console.log(data);
-                    let item;
-                    item={ };
-                    console.log(item);
-                    item.title = i.translations;
-                    item.completed = 0;
-                    let total = 0;
-                    let totalscore=0;
-                    console.log(i.tests);
-                    i.tests.map((test) => {
-                        console.log('processing data');
-                        item.completed++;
-                        total +=test.max;
-                        totalscore += test.score;
-                        data.push(test.score);
-                    });
-                    item.avarage=(totalscore/total)*10;
-                    this.graphdata.push(data);
-                    this.items.push(item);
+                if(this.init){
+                    this.init=false;
+                    console.log('executing');
+                    this.processData(data);
+                    this.ready();
+                }
 
-                });
-            },
-            error => this.error=error
-        )
+            }, error => this.error=error);
     }
-    
+
+    private processData(data){
+        data.map((i) => {
+            console.log(i);
+            let data:Array<number>;
+            data=[];
+            let item;
+            item={ };
+            item.title = i.translations;
+            item.completed = 0;
+            let total = 0;
+            let totalscore=0;
+            i.tests.map((test) => {
+                console.log('processing data');
+                item.completed++;
+                total +=test.max;
+                totalscore += test.score;
+                data.push(test.score);
+            });
+            item.avarage=(totalscore/total)*10;
+            this.graphdata.push(data);
+            this.items.push(item);
+
+        });
+    }
 
 
 
