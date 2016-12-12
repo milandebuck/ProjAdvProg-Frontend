@@ -28,13 +28,19 @@ export class DashboardComponent extends LoadingPage implements OnInit {
         this.scoreService.getScores().subscribe(
             (data)=> {
                 data.forEach((i) => {
+                    console.log('processing item');
                     let data:Array<number>;
-                    let item:Item;
+                    data=[];
+                    console.log(data);
+                    let item;
+                    item={ };
+                    console.log(item);
                     item.title = i.translations;
                     item.completed = 0;
                     let total = 0;
                     let totalscore=0;
                     i.tests.forEach((test) => {
+                        console.log('processing data');
                         item.completed++;
                         total +=test.max;
                         totalscore += test.score;

@@ -31,13 +31,19 @@ var DashboardComponent = (function (_super) {
         console.log(this.userService.isLoggedIn());
         this.scoreService.getScores().subscribe(function (data) {
             data.forEach(function (i) {
+                console.log('processing item');
                 var data;
+                data = [];
+                console.log(data);
                 var item;
+                item = {};
+                console.log(item);
                 item.title = i.translations;
                 item.completed = 0;
                 var total = 0;
                 var totalscore = 0;
                 i.tests.forEach(function (test) {
+                    console.log('processing data');
                     item.completed++;
                     total += test.max;
                     totalscore += test.score;
