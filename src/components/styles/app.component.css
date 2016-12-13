@@ -31,8 +31,6 @@ fieldset{
 }
 
 input, select, button{
-    text-align: center;
-    font-size: 100%;
     border: none;
 }
 
@@ -120,7 +118,6 @@ nav{
     border-bottom: solid;
     border-color: #FFC107;
     background-color: rgba(207,216,220,0.3);
-    bac
 }
 /*--- Login bar ---*/
 .login{
