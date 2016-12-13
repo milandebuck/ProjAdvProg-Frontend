@@ -7,7 +7,7 @@
                 <input type="text" #username class="form-control" id="username" placeholder="Username">
                 <input type="password" #password class="form-control" id="password" placeholder="Password">
                 <button (click)="onSubmit($event,username.value,password.value)" class="loginBtn">Login</button>
-                <a [routerLink]="['/Register']">If you don't have an account signup now</a>
+                <a [routerLink]="['/Register']" class="register">If you don't have an account signup <span>here</span></a>
             </div>
         </div>
         <div *ngSwitchCase="true" class="loadingwrapper">

@@ -54,6 +54,22 @@ h2{
     font-family: 'Roboto', sans-serif;
 }
 
+/* Register link */
+.register{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    color: #607D8B;
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
+
+.register span{
+    color: #FFC107;
+}
+
 /* Button */
 .loginBtn{
     font-size: 3rem;

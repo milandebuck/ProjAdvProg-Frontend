@@ -1,6 +1,7 @@
 // login.component.ts
 import { Component,EventEmitter,OnInit,Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { App } from './app.component'
 
 //services
 import { UserService } from './../services/user.service';
@@ -19,7 +20,7 @@ import {AppComponent} from "./app.component";
     styles: [ require('./styles/login.component.css') ],
     directives: [LoadingIndicator]
 })
-export class LoginComponent extends LoadingPage,AppComponent implements OnInit{
+export class LoginComponent extends LoadingPage implements OnInit{
     LoggedIn = this.userService.isLoggedIn();
     constructor(private userService: UserService, private router: Router) {
         super(true);
@@ -34,9 +35,9 @@ export class LoginComponent extends LoadingPage,AppComponent implements OnInit{
         this.standby();
         event.preventDefault();
         console.log("submitting");
-        this.changeStatus(true);
         this.userService.login(email, password).subscribe((result) => {
             if (result) {
+                //App.ngOnInit();
                 this.router.navigate(['Dashboard']);
             }
         });

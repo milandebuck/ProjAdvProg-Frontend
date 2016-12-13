@@ -38,9 +38,9 @@ var LoginComponent = (function (_super) {
         this.standby();
         event.preventDefault();
         console.log("submitting");
-        this.changeStatus(true);
         this.userService.login(email, password).subscribe(function (result) {
             if (result) {
+                //App.ngOnInit();
                 _this.router.navigate(['Dashboard']);
             }
         });
