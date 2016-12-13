@@ -71,3 +71,15 @@ button {
     width: 30%;
 
 }
+
+.progressTitle{
+    width: 100%;
+    margin:2% 1% 2% 1%;
+    padding: 0.5rem;
+    display: inline-block;
+    background-color: #CFD8DC;
+    border: none;
+    font-size: 2.5rem;
+    color:#262626;
+    text-align: left;
+}
