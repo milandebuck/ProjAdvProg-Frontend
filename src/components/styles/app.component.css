@@ -102,11 +102,13 @@ nav{
 }
 .navbar li{
     height: 58%;
-    line-height: 4rem;
+    line-height: 5rem;
     float: left;
     margin-left: 2rem;
     padding-top: 8%;
-    padding-bottom: 5%;
+    padding-bottom: 4.5%;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 .navbar li a {
     display: block;
@@ -117,6 +119,7 @@ nav{
 .navbar li:hover{
     border-bottom: solid;
     border-color: #FFC107;
+    border-width: thick;
     background-color: rgba(207,216,220,0.3);
 }
 /*--- Login bar ---*/
