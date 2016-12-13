@@ -8,7 +8,7 @@
                 <input type="password" #password class="form-control" id="password" placeholder="Password">
                 <input type="password" #confirmpass class="form-control" id="confirmpass" placeholder="Confirm Password">
                 <button (click)="onSubmit($event,username.value,password.value,confirmpass.value)" class="loginBtn">Register</button>
-                <a [routerLink]="['/Login']">If you already have an account login.</a>
+                <a [routerLink]="['/Login']" class="loginLink">If you already have an account <span>login</span>.</a>
             </div>
         </div>
         <div *ngSwitchCase="true" class="loadingwrapper">

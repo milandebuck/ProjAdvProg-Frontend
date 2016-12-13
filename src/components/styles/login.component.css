@@ -18,7 +18,7 @@ h2{
     width: 60%;
     margin: auto;
 }
-#username, #password{
+#username, #password, #confirmpass{
     color: #262626;
     border: none;
     border-left: solid;
@@ -55,7 +55,7 @@ h2{
 }
 
 /* Register link */
-.register{
+.register, .loginLink{
     display: block;
     width: 100%;
     margin: 0 auto;
@@ -66,7 +66,7 @@ h2{
     font-weight: lighter;
 }
 
-.register span{
+.register span, .loginLink span{
     color: #FFC107;
 }
 
