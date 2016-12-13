@@ -1,0 +1,13 @@
+<div *ngIf="showMenu">
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Tests</a></li>
+            <li><a href="#">Nav2</a></li>
+            <li><a href="#">Nav3</a></li>
+        </ul>
+    </nav>
+    <div class="login">
+        <p class="loginElement">Hello {{username}}</p>
+        <button type="button" class="loginElement" (click)="logout()"><a href="/">Logout</a></button>
+    </div>
+</div>

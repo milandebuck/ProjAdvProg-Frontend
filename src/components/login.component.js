@@ -20,18 +20,24 @@ var router_1 = require('@angular/router');
 var user_service_1 = require('./../services/user.service');
 //loading-indicator
 var loading_indicator_1 = require('./loading-indicator/loading-indicator');
+//globaleventmanager for navbar
+var GlobalEventsManager_1 = require('./../GlobalEventsManager');
 var LoginComponent = (function (_super) {
     __extends(LoginComponent, _super);
-    function LoginComponent(userService, router) {
+    function LoginComponent(userService, router, eventEmitter) {
         _super.call(this, true);
         this.userService = userService;
         this.router = router;
+        this.eventEmitter = eventEmitter;
         this.LoggedIn = this.userService.isLoggedIn();
         this.ready();
     }
     LoginComponent.prototype.ngOnInit = function () {
-        if (this.LoggedIn)
+        if (this.LoggedIn) {
+            this.eventEmitter.showNavBar.emit(true);
             this.router.navigate(['Dashboard']);
+        }
+        ;
     };
     LoginComponent.prototype.onSubmit = function (event, email, password) {
         var _this = this;
@@ -40,7 +46,7 @@ var LoginComponent = (function (_super) {
         console.log("submitting");
         this.userService.login(email, password).subscribe(function (result) {
             if (result) {
-                //App.ngOnInit();
+                _this.eventEmitter.showNavBar.emit(true);
                 _this.router.navigate(['Dashboard']);
             }
         });
@@ -52,7 +58,7 @@ var LoginComponent = (function (_super) {
             styles: [require('./styles/login.component.css')],
             directives: [loading_indicator_1.LoadingIndicator]
         }), 
-        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
+        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router, GlobalEventsManager_1.GlobalEventsManager])
     ], LoginComponent);
     return LoginComponent;
 }(loading_indicator_1.LoadingPage));

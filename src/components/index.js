@@ -8,4 +8,5 @@ __export(require('./exercise.component'));
 __export(require('./loading-indicator'));
 __export(require('./register.componet'));
 __export(require('./dashboard.componet'));
+__export(require('./nav.component'));
 //# sourceMappingURL=index.js.map
