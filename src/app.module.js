@@ -14,6 +14,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
 var ng2_charts_1 = require('ng2-charts/ng2-charts');
+var GlobalEventsManager_1 = require('./GlobalEventsManager');
 var components_1 = require('./components');
 var app_routes_1 = require('./app.routes');
 //services
@@ -30,7 +31,8 @@ var AppModule = (function () {
                 components_1.ExerciseComponent,
                 components_1.LoadingIndicator,
                 components_1.RegisterComponent,
-                components_1.DashboardComponent
+                components_1.DashboardComponent,
+                components_1.NavComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -46,7 +48,8 @@ var AppModule = (function () {
                 services_1.EntryService,
                 services_1.CookieService,
                 services_1.ExtractService,
-                services_1.ScoreService
+                services_1.ScoreService,
+                GlobalEventsManager_1.GlobalEventsManager
             ]
         }), 
         __metadata('design:paramtypes', [])

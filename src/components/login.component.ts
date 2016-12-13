@@ -9,6 +9,9 @@ import { UserService } from './../services/user.service';
 //loading-indicator
 import {LoadingIndicator, LoadingPage} from './loading-indicator/loading-indicator';
 
+//globaleventmanager for navbar
+import { GlobalEventsManager } from './../GlobalEventsManager'
+
 //model
 import { User } from './../models/User';
 import {OnInit} from "@angular/core";
@@ -22,13 +25,16 @@ import {AppComponent} from "./app.component";
 })
 export class LoginComponent extends LoadingPage implements OnInit{
     LoggedIn = this.userService.isLoggedIn();
-    constructor(private userService: UserService, private router: Router) {
+    constructor(private userService: UserService, private router: Router,private eventEmitter : GlobalEventsManager) {
         super(true);
         this.ready();
     }
 
     ngOnInit(){
-        if(this.LoggedIn)this.router.navigate(['Dashboard']);
+        if(this.LoggedIn){
+            this.eventEmitter.showNavBar.emit(true);
+            this.router.navigate(['Dashboard'])
+        };
     }
 
     onSubmit(event,email, password) {
@@ -37,7 +43,7 @@ export class LoginComponent extends LoadingPage implements OnInit{
         console.log("submitting");
         this.userService.login(email, password).subscribe((result) => {
             if (result) {
-                //App.ngOnInit();
+                this.eventEmitter.showNavBar.emit(true);
                 this.router.navigate(['Dashboard']);
             }
         });

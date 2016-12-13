@@ -12,28 +12,14 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 require('./rxjs-operators');
 var user_service_1 = require('../services/user.service');
+var GlobalEventsManager_1 = require('./../GlobalEventsManager');
 var AppComponent = (function () {
-    function AppComponent(userService, router) {
+    function AppComponent(userService, router, eventEmitter) {
         this.userService = userService;
         this.router = router;
+        this.eventEmitter = eventEmitter;
     }
     AppComponent.prototype.ngOnInit = function () {
-        console.log('logincheck');
-        this.loggedIn = this.userService.isLoggedIn();
-        this.username = localStorage.getItem('username');
-    };
-    AppComponent.prototype.userStatus = function (l) {
-        this.loggedIn = l;
-        console.log(this.loggedIn);
-    };
-    AppComponent.prototype.logout = function () {
-        this.userService.logout();
-        localStorage.removeItem('username');
-        this.loggedIn = this.userService.isLoggedIn();
-        this.router.navigate(['Login']);
-    };
-    AppComponent.prototype.changeStatus = function (s) {
-        this.loggedIn = s;
     };
     AppComponent = __decorate([
         core_1.Component({
@@ -41,7 +27,7 @@ var AppComponent = (function () {
             template: require('./templates/app.component.html'),
             styles: [require('./styles/app.component.css')]
         }), 
-        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
+        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router, GlobalEventsManager_1.GlobalEventsManager])
     ], AppComponent);
     return AppComponent;
 }());

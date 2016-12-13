@@ -1,21 +1,8 @@
 <div class="outerWrapper">
     <header class="header clearfix">
-        <div class="wrapper">
+        <div class="wrapper headerwrap">
             <h1 class="logo"><a href="/">Logo</a></h1>
-            <div *ngIf="loggedIn === true">
-                <nav class="navbar">
-                    <ul>
-                        <li><a href="/">Tests</a></li>
-                        <li><a href="#">Nav2</a></li>
-                        <li><a href="#">Nav3</a></li>
-                    </ul>
-                </nav>
-                <div class="login">
-                    <p class="loginElement">Hello {{username}}</p>
-                    <button type="button" class="loginElement" (click)="logout()"><a href="/">Logout</a></button>
-                </div>
-            </div>
-
+            <nav-menu></nav-menu>
         </div>
     </header>
     <div class="wrapper">

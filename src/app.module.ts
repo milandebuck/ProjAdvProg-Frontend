@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule }   from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { GlobalEventsManager } from './GlobalEventsManager';
 
 import {
     AppComponent,
@@ -11,7 +12,8 @@ import {
     ExerciseComponent,
     LoadingIndicator,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavComponent
 } from './components';
 
 import { routes } from './app.routes';
@@ -36,7 +38,8 @@ import {
         ExerciseComponent,
         LoadingIndicator,
         RegisterComponent,
-        DashboardComponent
+        DashboardComponent,
+        NavComponent
     ],
     imports: [
         BrowserModule,
@@ -52,7 +55,8 @@ import {
         EntryService,
         CookieService,
         ExtractService,
-        ScoreService
+        ScoreService,
+        GlobalEventsManager
     ]
 })
 export class AppModule {}

@@ -61,6 +61,12 @@ nav{
     width:80rem;
     margin: 0 auto;
 }
+.headerwrap{
+    height: 100%;
+}
+.navwrapper{
+    height: 100%;
+}
 .centerwrapper{
     min-height:40rem;
 }
@@ -89,19 +95,20 @@ nav{
     margin: 0rem;
     display: inline-block;
     font-size: 3rem;
-    height: 10rem;
+    height: 100%
 }
 
 .navbar ul{
     margin: 0;
-    height: 10rem;
+    height: 100%;
 }
 .navbar li{
-    height: 4rem;
+    height: 58%;
     line-height: 4rem;
     float: left;
     margin-left: 2rem;
-    margin-top: 3rem;
+    padding-top: 8%;
+    padding-bottom: 5%;
 }
 .navbar li a {
     display: block;
@@ -112,6 +119,8 @@ nav{
 .navbar li:hover{
     border-bottom: solid;
     border-color: #FFC107;
+    background-color: rgba(207,216,220,0.3);
+    bac
 }
 /*--- Login bar ---*/
 .login{

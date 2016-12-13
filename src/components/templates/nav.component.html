@@ -1,0 +1,12 @@
+<div *ngIf="showMenu" class="navwrapper">
+    <nav class="navbar">
+        <ul>
+            <li><a [routerLink]="['Dashboard']">Dashboard</a></li>
+            <li><a [routerLink]="['Exercise']">Start Test</a></li>
+        </ul>
+    </nav>
+    <div class="login">
+        <p class="loginElement">Hello {{username}}</p>
+        <button type="button" class="loginElement" (click)="logout()"><a href="/">Logout</a></button>
+    </div>
+</div>
