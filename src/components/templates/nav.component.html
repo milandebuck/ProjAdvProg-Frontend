@@ -1,9 +1,8 @@
-<div *ngIf="showMenu">
+<div *ngIf="showMenu" class="navwrapper">
     <nav class="navbar">
         <ul>
-            <li><a href="/">Tests</a></li>
-            <li><a href="#">Nav2</a></li>
-            <li><a href="#">Nav3</a></li>
+            <li><a [routerLink]="['Dashboard']">Dashboard</a></li>
+            <li><a [routerLink]="['Exercise']">Start Test</a></li>
         </ul>
     </nav>
     <div class="login">
