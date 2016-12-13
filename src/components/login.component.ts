@@ -11,6 +11,7 @@ import {LoadingIndicator, LoadingPage} from './loading-indicator/loading-indicat
 //model
 import { User } from './../models/User';
 import {OnInit} from "@angular/core";
+import {AppComponent} from "./app.component";
 
 @Component({
     selector: 'login',
@@ -18,16 +19,14 @@ import {OnInit} from "@angular/core";
     styles: [ require('./styles/login.component.css') ],
     directives: [LoadingIndicator]
 })
-export class LoginComponent extends LoadingPage implements OnInit{
+export class LoginComponent extends LoadingPage,AppComponent implements OnInit{
     LoggedIn = this.userService.isLoggedIn();
-    @Output() userStatus = new EventEmitter<boolean>();
     constructor(private userService: UserService, private router: Router) {
         super(true);
         this.ready();
     }
 
     ngOnInit(){
-        this.userStatus.emit(false);
         if(this.LoggedIn)this.router.navigate(['Dashboard']);
     }
 
@@ -35,6 +34,7 @@ export class LoginComponent extends LoadingPage implements OnInit{
         this.standby();
         event.preventDefault();
         console.log("submitting");
+        this.changeStatus(true);
         this.userService.login(email, password).subscribe((result) => {
             if (result) {
                 this.router.navigate(['Dashboard']);

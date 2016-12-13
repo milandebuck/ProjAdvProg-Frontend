@@ -27,11 +27,9 @@ var LoginComponent = (function (_super) {
         this.userService = userService;
         this.router = router;
         this.LoggedIn = this.userService.isLoggedIn();
-        this.userStatus = new core_1.EventEmitter();
         this.ready();
     }
     LoginComponent.prototype.ngOnInit = function () {
-        this.userStatus.emit(false);
         if (this.LoggedIn)
             this.router.navigate(['Dashboard']);
     };
@@ -40,16 +38,13 @@ var LoginComponent = (function (_super) {
         this.standby();
         event.preventDefault();
         console.log("submitting");
+        this.changeStatus(true);
         this.userService.login(email, password).subscribe(function (result) {
             if (result) {
                 _this.router.navigate(['Dashboard']);
             }
         });
     };
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], LoginComponent.prototype, "userStatus", void 0);
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',

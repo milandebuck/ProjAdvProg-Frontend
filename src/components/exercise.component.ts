@@ -1,6 +1,6 @@
 // exercise.component.ts
 import {Component, OnInit,EventEmitter,Output } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { Entry } from './../models/Entry';
 
 import { EntryService } from './../services/entry.service';
@@ -21,8 +21,7 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     curlangs:string;
     languages=["NL-EN","EN-NL"];
     private error;
-    @Output() userStatus = new EventEmitter<boolean>();
-    constructor( private entryService:EntryService){
+    constructor( private entryService:EntryService,private router: Router){
         super(true);
         this.ready();
     };
@@ -31,7 +30,6 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     i = 0;
     ngOnInit(){
         console.log('initializing..');
-        this.userStatus.emit(true);
         this.setup =true;
         this.score = -1;
     }
@@ -58,6 +56,7 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     }
 
     next(answer){
+        console.log(answer);
         this.count ++;
         if(this.entries[this.count]){
             this.entries[this.count-1].translation = answer;
@@ -89,5 +88,9 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
         this.score = -1;
         this.count= 0 ;
         this.setup = true;
+    }
+
+    goBack(){
+        this.router.navigate(['Dashboard'])
     }
 }

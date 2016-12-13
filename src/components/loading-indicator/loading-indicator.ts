@@ -10,7 +10,7 @@ import {Component} from '@angular/core';
 })
 export class LoadingIndicator {}
 
-export class LoadingPage {
+export class LoadingPage{
     public loading: boolean;
     constructor(val: boolean) {
         this.loading = val;

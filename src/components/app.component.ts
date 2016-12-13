@@ -32,4 +32,8 @@ export class AppComponent implements OnInit{
         this.loggedIn = this.userService.isLoggedIn();
         this.router.navigate(['Login']);
     }
+
+    changeStatus(s : boolean){
+        this.loggedIn=s;
+    }
 }

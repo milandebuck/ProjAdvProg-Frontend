@@ -32,6 +32,9 @@ var AppComponent = (function () {
         this.loggedIn = this.userService.isLoggedIn();
         this.router.navigate(['Login']);
     };
+    AppComponent.prototype.changeStatus = function (s) {
+        this.loggedIn = s;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
