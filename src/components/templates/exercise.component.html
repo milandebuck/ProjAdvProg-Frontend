@@ -35,9 +35,13 @@
 
             </div>
             <div *ngIf="score != -1">
-                <h2>Your score is: {{score}}</h2>
-                <button (click)="startNewTest()" class="endBtn">Start new test</button>
-                <button (click)="goBack()" class="endBtn">Back to Dashboard</button>
+                <h2>Test completed!</h2>
+                <div class="formContent">
+                    <h3>Your score is: {{score}}</h3>
+                    <button (click)="startNewTest()" class="endBtn">Start new test</button>
+                    <button (click)="goBack()" class="endBtn">Back to Dashboard</button>
+                </div>
+
             </div>
         </div>
         <div *ngSwitchCase="true" class="loadingwrapper">

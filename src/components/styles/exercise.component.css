@@ -26,7 +26,7 @@
     border: none;
     border-left: solid;
     border-width: thick;
-    border-left-color: #FFC107;
+    border-left-color: #1565c0;
     padding-left: 1rem;
     color: #262626;
 }
@@ -35,7 +35,7 @@
     display: block;
     float: right;
     border: none;
-    background-color: #FFC107;
+    background-color: #1565c0;
     color: #ffffff;
     width: 20rem;
     height: 4rem;
@@ -52,13 +52,16 @@
     margin: 0 auto;
 }
 /* Title */
-h2{
+h2,h3{
     display: block;
     width: 100%;
-    color: #607D8B;
+    color: #ffffff;
     font-size: 4rem;
     font-weight: lighter;
     text-align: center;
+}
+h3{
+    color: #262626;
 }
 /* Content */
 .formContent{
@@ -66,7 +69,11 @@ h2{
     width: 100%;
     margin: 0 auto;
     height: 20rem;
-    background-color: #CFD8DC;
+    background-color: rgba(255,255,255,0.8);
+    border: none;
+    border-left: solid;
+    border-width: thick;
+    border-left-color: #1565c0;
     margin-bottom: 4rem;
 }
 .formElement{
@@ -89,7 +96,7 @@ h2{
     border: none;
     border-left: solid;
     border-width: thick;
-    border-left-color: #FFC107;
+    border-left-color: #1565c0;
     padding-left: 1rem;
     color: #262626;
 }
@@ -108,7 +115,7 @@ h2{
     display: block;
     float: right;
     border: none;
-    background-color: #FFC107;
+    background-color: #1565c0;
     color: #ffffff;
     width: 20rem;
     height: 4rem;
@@ -121,7 +128,7 @@ h2{
     float: right;
     display: block;
     border:none;
-    background-color: #607D8B;
+    background-color: #262626;
     color: #CFD8DC;
     width: 20rem;
     height: 4rem;
@@ -134,8 +141,8 @@ h2{
     float: right;
     display: block;
     border:none;
-    background-color: #607D8B;
-    color: #CFD8DC;
+    background-color: #1565c0;
+    color: #ffffff;
     width: 46%;
     margin: 1rem;
     height: 4rem;

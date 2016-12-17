@@ -2,12 +2,12 @@
 h2,h3,h4{
     display: block;
     width: 100%;
-    color: #607D8B;
+    color: #ffffff;
     font-size: 4rem;
     font-weight: lighter;
     text-align: center;
     padding: 0;
-    margin: 0;
+    padding: 0 2rem 0 2rem;
 }
 h3{
     font-size: 2rem;
@@ -20,7 +20,7 @@ h4{
     margin: 1rem;
 }
 button {
-    background-color: #FFC107;
+    background-color: #1565c0;
     color:#ffffff;
     font-size: 2rem;
     float: right;
@@ -29,7 +29,14 @@ button {
     margin: 1rem;
     padding: 0.5rem;
 }
-
+.chart{
+    background-color: rgba(255,255,255,0.8);
+    padding: 1rem;
+    border: none;
+    border-left: solid;
+    border-width: thick;
+    border-left-color: #1565c0;
+}
 .tiles{
     width:150%;
     margin-left: -17%;
@@ -40,11 +47,11 @@ button {
     margin:2% 1% 2% 1%;
     padding: 0.5rem;
     display: inline-block;
-    background-color: #CFD8DC;
+    background-color: rgba(255,255,255,0.8);
     border: none;
     border-left: solid;
     border-width: thick;
-    border-left-color: #FFC107;
+    border-left-color: #1565c0;
 }
 
 .tile ul{
@@ -62,11 +69,11 @@ button {
     display: block;
     font-size: 2rem;
     float: left;
-    background-color: #607D8B;
+    background-color: rgba(0,0,0,0.5);
     color: #ffffff;
 }
 .tile li > span {
-    color: #FFC107;
+    color: #1565c0;
     text-align: right;
     width: 30%;
 
