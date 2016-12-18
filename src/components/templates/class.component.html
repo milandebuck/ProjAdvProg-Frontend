@@ -1,0 +1,35 @@
+<div class="contentWrapper clearfix">
+    <h2>{{username}}'s classes</h2>
+    <div [ngSwitch]="loading">
+        <div *ngSwitchCase="false">
+            <div [ngSwitch]="teacher">
+                <div *ngSwitchCase="true">
+
+                </div>
+                <div *ngswitchcase="false">
+                    <div class="tiles">
+                        <ul>
+                            <li *ngFor="let class of classes" class="tile">
+                                <h3>{{class.title}}</h3>
+                                <div>
+                                    <h4>open tests</h4>
+                                    <ul>
+                                        <li *ngFor="let test of tests">
+                                            <p>test.title</p>
+                                            <button>Start Test</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button (click)="startNew()" class="startBtn">Start new test</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="true" class="loadingwrapper">
+            <loading-indicator></loading-indicator>
+        </div>
+    </div>
+
+</div>
