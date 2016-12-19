@@ -10,6 +10,7 @@ import {LoadingPage} from "./loading-indicator/loading-indicator";
 export class ClassComponent extends LoadingPage implements  OnInit{
     username:string = localStorage.getItem('username');
     classes:Array<any>;
+    teacher:boolean=true;
     constructor(){
         super(true);
     }

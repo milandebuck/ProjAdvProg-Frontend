@@ -4,7 +4,30 @@
         <div *ngSwitchCase="false">
             <div [ngSwitch]="teacher">
                 <div *ngSwitchCase="true">
-
+                    <div *ngIf="detail">
+                        <h3>{{detail.title}}</h3>
+                        <div>
+                            <h4>students</h4>
+                            <ul>
+                                <li *ngFor="let student of students">student.name</li>
+                                <li>
+                                    <input #newstudent type="text">
+                                    <button (click)="addStudent(newstudent)">Add student</button>
+                                </li>
+                            </ul>
+                            <button (click)="addTest()">Add test</button>
+                        </div>
+                    </div>
+                    <div class="tiles">
+                        <ul>
+                            <li *ngFor="let class of classes" class="tile">
+                                <h3>{{class.title}}</h3>
+                                <p>{{class.tests.count()}}</p>
+                                <button (click)="viewDetails(class)">View Details</button>
+                            </li>
+                            <li><button>Add group</button></li>
+                        </ul>
+                    </div>
                 </div>
                 <div *ngswitchcase="false">
                     <div class="tiles">
@@ -16,11 +39,10 @@
                                     <ul>
                                         <li *ngFor="let test of tests">
                                             <p>test.title</p>
-                                            <button>Start Test</button>
+                                            <button (click)="startTest(test)">Start Test</button>
                                         </li>
                                     </ul>
                                 </div>
-                                <button (click)="startNew()" class="startBtn">Start new test</button>
                             </li>
                         </ul>
                     </div>
