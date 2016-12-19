@@ -47,7 +47,7 @@ li{
     float: left;
 }
 nav{
-    width: 50%;
+    width: 65%;
 }
 .header, .footer{
     width: 100%;
@@ -60,6 +60,7 @@ nav{
     margin: 0 auto;
 }
 .headerwrap{
+    width: 60%;
     height: 100%;
 }
 .navwrapper{
@@ -102,8 +103,7 @@ nav{
     height: 100%;
 }
 .navbar li{
-    height: 58%;
-    line-height: 5rem;
+    height: 38%;
     float: left;
     margin-left: 2rem;
     padding-top: 8%;
@@ -113,10 +113,10 @@ nav{
 }
 .navbar li a {
     display: block;
-    height: 4rem;
     width: 100%;
     height: 100%;
     color: #262626;
+    line-height: 0.5rem;
 }
 .navbar li:hover{
     border-bottom: solid;
@@ -128,7 +128,7 @@ nav{
 .login{
     display: inline-block;
     float: right;
-    width: 35%;
+    width: 25%;
     height: 10rem;
 }
 .loginElement{
