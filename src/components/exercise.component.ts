@@ -71,11 +71,13 @@ export class ExerciseComponent extends LoadingPage implements OnInit{
     }
 
     getScore(){
+        this.standby()
         console.log("end of test");
         console.log(this.entries);
         this.entryService.getScore(this.entries).subscribe(
             (res) => {
                 this.score = res.score;
+                this.ready();
                 console.log(res.score);
             },
             error => this.error = error

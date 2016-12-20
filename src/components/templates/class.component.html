@@ -5,36 +5,39 @@
             <div [ngSwitch]="teacher">
                 <div *ngSwitchCase="true">
                     <div *ngIf="detail">
-                        <h3>{{detail.title}}</h3>
+                        <h3>{{detail.name}}</h3>
                         <div>
                             <h4>students</h4>
                             <ul>
                                 <li *ngFor="let student of students">student.name</li>
                                 <li>
-                                    <input #newstudent type="text">
-                                    <button (click)="addStudent(newstudent)">Add student</button>
+                                    <livesearch (selectEvent) = addStudent(newstudent)></livesearch>
+                                    <button (click)="addStudents()">Add new students</button>
                                 </li>
                             </ul>
+
                             <button (click)="addTest()">Add test</button>
                         </div>
                     </div>
                     <div class="tiles">
                         <ul>
                             <li *ngFor="let class of classes" class="tile">
-                                <h3>{{class.title}}</h3>
-                                <p>{{class.tests.count()}}</p>
-                                <button (click)="viewDetails(class)">View Details</button>
+                                <h3 class="addgroup" >{{class.name}}</h3>
+                                <button class="addgroup" (click)="viewDetails(class)">View Details</button>
                             </li>
-                            <li><button>Add group</button></li>
+                            <li class="tile">
+                                <input class="addgroup" #groupname type="text" placeholder="groupname">
+                                <button class="addgroup" (click)="addGroup(groupname.value); groupname.value=''">Add group</button>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div *ngswitchcase="false">
+                <div *ngSwitchCase="false">
                     <div class="tiles">
                         <ul>
                             <li *ngFor="let class of classes" class="tile">
-                                <h3>{{class.title}}</h3>
-                                <div>
+                                <h3>{{class.name}}</h3>
+                                <div *ngIf="tests">
                                     <h4>open tests</h4>
                                     <ul>
                                         <li *ngFor="let test of tests">

@@ -26,8 +26,12 @@ import {
     UserService,
     LoggedInGuard,
     ExtractService,
-    ScoreService
+    ScoreService,
+    SearchService
 } from './services'
+import {ClassComponent} from "./components/class.component";
+import {LiveSearch} from "./components/livesearch/livesearch.component";
+import {ClassService} from "./services/class.service";
 
 
 @NgModule({
@@ -39,7 +43,9 @@ import {
         LoadingIndicator,
         RegisterComponent,
         DashboardComponent,
-        NavComponent
+        NavComponent,
+        ClassComponent,
+        LiveSearch
     ],
     imports: [
         BrowserModule,
@@ -56,6 +62,8 @@ import {
         CookieService,
         ExtractService,
         ScoreService,
+        ClassService,
+        SearchService,
         GlobalEventsManager
     ]
 })

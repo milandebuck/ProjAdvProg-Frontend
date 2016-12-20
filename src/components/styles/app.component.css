@@ -79,6 +79,7 @@ nav{
     height: 100rem;
     width: 100%;
     background-image: url("public/img/panorama.jpg");
+    background-repeat: repeat ;
 }
 /*--- Logo ---*/
 .logo{
@@ -106,10 +107,10 @@ nav{
     height: 38%;
     float: left;
     margin-left: 2rem;
-    padding-top: 8%;
-    padding-bottom: 4.5%;
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-top: 6%;
+    padding-bottom: 4%;
+    padding-left: 4%;
+    padding-right: 4%;
 }
 .navbar li a {
     display: block;

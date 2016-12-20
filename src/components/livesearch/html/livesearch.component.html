@@ -1,0 +1,8 @@
+<div>
+    <input type="text" #term (keyup)="search(term)">
+    <ul *ngIf="items">
+       <li *ngFor="let item of items" (click)="select(item)">
+           item
+       </li>
+    </ul>
+</div>

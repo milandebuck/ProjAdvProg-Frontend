@@ -8,4 +8,6 @@ __export(require('./extract.service'));
 __export(require('./logged-in.guard'));
 __export(require('./score.service'));
 __export(require('./user.service'));
+__export(require('./class.service'));
+__export(require('./search.service'));
 //# sourceMappingURL=index.js.map

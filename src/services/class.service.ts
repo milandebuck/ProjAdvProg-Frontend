@@ -10,19 +10,20 @@ export class ClassService {
     constructor(private http: Http, private  cookieService:CookieService,private  extractService : ExtractService) { }
 
     createClass(name:string){
+        console.log(name);
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         //routeparams
         let params = new URLSearchParams();
         params.append('token',this.cookieService.getCookie('auth_token'));
-        params.append('name',name);
         //options
         let options = new RequestOptions({
             headers: headers,
             search: params
         });
+        console.log(options);
         return this.http
-            .post('http://teammartini.herokuapp.com/Group/SaveGroup',options)
+            .post('https://teammartini.herokuapp.com/Group/SaveGroup',JSON.stringify({name: name}),options)
             .map(this.extractService.extractData)
             .catch(this.extractService.handleError);
     }
@@ -52,7 +53,40 @@ export class ClassService {
         //routeparams
         let params = new URLSearchParams();
         params.append('token',this.cookieService.getCookie('auth_token'));
-        params.append('students',students);
+        //options
+        let options = new RequestOptions({
+            headers: headers,
+            search: params
+        });
+        return this.http
+            .get('http://teammartini.herokuapp.com/GetGroups',options)
+            .map(this.extractService.extractData)
+            .catch(this.extractService.handleError);
+    }
+
+    checkifTeacher(){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        //routeparams
+        let params = new URLSearchParams();
+        params.append('token',this.cookieService.getCookie('auth_token'));
+        //options
+        let options = new RequestOptions({
+            headers: headers,
+            search: params
+        });
+        return this.http
+            .get('http://teammartini.herokuapp.com/IsTeacher',options)
+            .map(this.extractService.extractData)
+            .catch(this.extractService.handleError);
+    }
+
+    getStudents(id){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        //routeparams
+        let params = new URLSearchParams();
+        params.append('token',this.cookieService.getCookie('auth_token'));
         params.append('groupid',id);
         //options
         let options = new RequestOptions({
@@ -60,7 +94,7 @@ export class ClassService {
             search: params
         });
         return this.http
-            .get('http://teammartini.herokuapp.com/Group/Addstudents',options)
+            .get('http://teammartini.herokuapp.com/Group/GetStudents',options)
             .map(this.extractService.extractData)
             .catch(this.extractService.handleError);
     }

@@ -5,3 +5,5 @@ export * from './loading-indicator';
 export * from './register.componet';
 export * from './dashboard.componet';
 export * from './nav.component';
+export * from './class.component';
+export * from './livesearch/livesearch.component'

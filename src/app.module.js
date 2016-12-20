@@ -19,6 +19,9 @@ var components_1 = require('./components');
 var app_routes_1 = require('./app.routes');
 //services
 var services_1 = require('./services');
+var class_component_1 = require("./components/class.component");
+var livesearch_component_1 = require("./components/livesearch/livesearch.component");
+var class_service_1 = require("./services/class.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,7 +35,9 @@ var AppModule = (function () {
                 components_1.LoadingIndicator,
                 components_1.RegisterComponent,
                 components_1.DashboardComponent,
-                components_1.NavComponent
+                components_1.NavComponent,
+                class_component_1.ClassComponent,
+                livesearch_component_1.LiveSearch
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -49,6 +54,8 @@ var AppModule = (function () {
                 services_1.CookieService,
                 services_1.ExtractService,
                 services_1.ScoreService,
+                class_service_1.ClassService,
+                services_1.SearchService,
                 GlobalEventsManager_1.GlobalEventsManager
             ]
         }), 

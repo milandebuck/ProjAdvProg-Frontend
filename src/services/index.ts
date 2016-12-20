@@ -4,3 +4,5 @@ export * from './extract.service';
 export * from './logged-in.guard';
 export * from './score.service';
 export * from './user.service';
+export * from './class.service';
+export * from './search.service';

@@ -9,4 +9,6 @@ __export(require('./loading-indicator'));
 __export(require('./register.componet'));
 __export(require('./dashboard.componet'));
 __export(require('./nav.component'));
+__export(require('./class.component'));
+__export(require('./livesearch/livesearch.component'));
 //# sourceMappingURL=index.js.map

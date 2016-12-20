@@ -67,10 +67,12 @@ var ExerciseComponent = (function (_super) {
     };
     ExerciseComponent.prototype.getScore = function () {
         var _this = this;
+        this.standby();
         console.log("end of test");
         console.log(this.entries);
         this.entryService.getScore(this.entries).subscribe(function (res) {
             _this.score = res.score;
+            _this.ready();
             console.log(res.score);
         }, function (error) { return _this.error = error; });
         this.curEntry = null;
