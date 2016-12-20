@@ -14,6 +14,7 @@ export class ClassComponent extends LoadingPage implements  OnInit{
     classes:Array<any>;
     students:Array<any>;
     newstudents:Array<any>;
+    tests:Array<any>
     detail:any;
     teacher:boolean=true;
     constructor(private classService:ClassService){
@@ -44,6 +45,7 @@ export class ClassComponent extends LoadingPage implements  OnInit{
             this.students = students;
             this.detail=c;
         });
+        this.classService.getTests(c.id).subscribe( tests => this.tests = tests);
 
     }
 

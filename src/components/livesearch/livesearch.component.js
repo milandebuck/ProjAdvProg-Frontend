@@ -17,6 +17,12 @@ var LiveSearch = (function () {
         this.term = new forms_1.FormControl();
         this.selectEvent = new core_1.EventEmitter();
     }
+    LiveSearch.prototype.ngOnInit = function () {
+        var _this = this;
+        this.term.valueChanges
+            .debounceTime(400)
+            .subscribe(function (term) { return _this.searchService.search(term).subscribe(function (items) { return _this.items = items; }); });
+    };
     LiveSearch.prototype.search = function (term) {
         var _this = this;
         this.term.valueChanges

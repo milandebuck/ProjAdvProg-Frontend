@@ -5,13 +5,12 @@ h2,h3,h4{
     font-size: 4rem;
     font-weight: lighter;
     text-align: center;
-    padding: 0;
     padding: 0 2rem 0 2rem;
 }
 h3{
     display: inline-block;
     color:#262626;
-    font-size: 2rem;
+    font-size: 3rem;
     padding: 0.5rem;
     text-align: left;
 }
@@ -21,15 +20,53 @@ h4{
     text-align: left;
     margin: 1rem;
 }
+.detail h4{
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    float: left;
+    margin-bottom: 2rem;
+}
+.detail{
+    background-color: rgba(255,255,255,0.8);
+    padding:1rem;
+    height: auto;
+
+}
+.detail div{
+    width: 48%;
+    float: left;
+}
+.detail ul{
+    width: 80%;
+    float: left;
+    font-size: 2rem;
+}
+
+.detail li{
+    text-align: center;
+    display: block;
+    color:#ffffff;
+    background-color: #1565c0;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+.addstudent{
+    background-color: rgba(0,0,0,0.3) !important;
+}
 button {
     background-color: #1565c0;
     color:#ffffff;
     font-size: 2rem;
     float: right;
-    width: 30%;
-    height: 20%;
     margin: 1rem;
     padding: 0.5rem;
+}
+.addstudent button {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
 }
 .tiles{
     width:100%;

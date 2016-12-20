@@ -4,19 +4,26 @@
         <div *ngSwitchCase="false">
             <div [ngSwitch]="teacher">
                 <div *ngSwitchCase="true">
-                    <div *ngIf="detail">
+                    <div *ngIf="detail" class="detail clearfix">
                         <h3>{{detail.name}}</h3>
                         <div>
                             <h4>students</h4>
                             <ul>
-                                <li *ngFor="let student of students">student.name</li>
-                                <li>
+                                <li *ngFor="let student of students">{{student.name}}</li>
+                                <li class="addstudent">
                                     <livesearch (selectEvent) = addStudent(newstudent)></livesearch>
                                     <button (click)="addStudents()">Add new students</button>
                                 </li>
                             </ul>
-
-                            <button (click)="addTest()">Add test</button>
+                        </div>
+                        <div>
+                            <h4>Tests</h4>
+                            <ul>
+                                <li *ngFor="let test of tests">{{test.name}}</li>
+                                <li class="addstudent">
+                                    <button (click)="addTest()">Add test</button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="tiles">

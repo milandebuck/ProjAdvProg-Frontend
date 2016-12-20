@@ -25,7 +25,7 @@ var UserService = (function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http
-            .post('http://teammartini.herokuapp.com/login', JSON.stringify({ username: username, password: password }), { headers: headers })
+            .post('http://teammartini.herokuapp.com/Login', JSON.stringify({ username: username, password: password }), { headers: headers })
             .map(function (res) { return res.json(); })
             .map(function (res) {
             if (!res.status) {
@@ -44,7 +44,7 @@ var UserService = (function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http
-            .post('http://teammartini.herokuapp.com/registration', JSON.stringify({ username: username, password: password, confirmpass: confirmpass }), { headers: headers })
+            .post('http://teammartini.herokuapp.com/Registration', JSON.stringify({ username: username, password: password, confirmpass: confirmpass }), { headers: headers })
             .map(function (res) { return res.json(); })
             .map(function (res) {
             if (!res.status) {

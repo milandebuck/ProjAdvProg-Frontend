@@ -76,7 +76,7 @@ nav{
     top: 40%;
 }
 .outerWrapper{
-    height: 100rem;
+    min-height: 100rem;
     width: 100%;
     background-image: url("public/img/panorama.jpg");
     background-repeat: repeat ;
@@ -161,7 +161,6 @@ nav{
 
 /*--- Footer ---*/
 .footer{
-    position: fixed;
     display: block;
     float: left;
     bottom: 0;

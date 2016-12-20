@@ -45,6 +45,7 @@ var ClassComponent = (function (_super) {
             _this.students = students;
             _this.detail = c;
         });
+        this.classService.getTests(c.id).subscribe(function (tests) { return _this.tests = tests; });
     };
     ClassComponent.prototype.addStudent = function (student) {
         if (!this.contains(student)) {

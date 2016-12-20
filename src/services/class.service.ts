@@ -64,6 +64,24 @@ export class ClassService {
             .catch(this.extractService.handleError);
     }
 
+    getTests(id){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        //routeparams
+        let params = new URLSearchParams();
+        params.append('token',this.cookieService.getCookie('auth_token'));
+        params.append('groupid',id);
+        //options
+        let options = new RequestOptions({
+            headers: headers,
+            search: params
+        });
+        return this.http
+            .get('http://teammartini.herokuapp.com/GetTests',options)
+            .map(this.extractService.extractData)
+            .catch(this.extractService.handleError);
+    }
+
     checkifTeacher(){
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');

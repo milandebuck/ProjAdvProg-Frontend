@@ -2,7 +2,7 @@
 <div class="contentWrapper clearfix">
     <h2>{{username}}'s dashboard</h2>
     <div [ngSwitch]="loading">
-        <div *ngSwitchCase="false">
+        <div *ngSwitchCase="false" class="clearfix">
             <div class="chart">
                 <canvas baseChart
                         [datasets]="graphdata"

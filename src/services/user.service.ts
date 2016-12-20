@@ -18,7 +18,7 @@ export class UserService {
         headers.append('Content-Type', 'application/json');
 
         return this.http
-            .post('http://teammartini.herokuapp.com/login', JSON.stringify({username, password}), {headers})
+            .post('http://teammartini.herokuapp.com/Login', JSON.stringify({username, password}), {headers})
             .map(res => res.json())
             .map((res) => {
                 if (!res.status) {
@@ -38,7 +38,7 @@ export class UserService {
         headers.append('Content-Type', 'application/json');
 
         return this.http
-            .post('http://teammartini.herokuapp.com/registration', JSON.stringify({username, password,confirmpass}), {headers})
+            .post('http://teammartini.herokuapp.com/Registration', JSON.stringify({username, password,confirmpass}), {headers})
             .map(res => res.json())
             .map((res) => {
                 if (!res.status) {

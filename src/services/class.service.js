@@ -71,6 +71,23 @@ var ClassService = (function () {
             .map(this.extractService.extractData)
             .catch(this.extractService.handleError);
     };
+    ClassService.prototype.getTests = function (id) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        //routeparams
+        var params = new http_1.URLSearchParams();
+        params.append('token', this.cookieService.getCookie('auth_token'));
+        params.append('groupid', id);
+        //options
+        var options = new http_1.RequestOptions({
+            headers: headers,
+            search: params
+        });
+        return this.http
+            .get('http://teammartini.herokuapp.com/GetTests', options)
+            .map(this.extractService.extractData)
+            .catch(this.extractService.handleError);
+    };
     ClassService.prototype.checkifTeacher = function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
