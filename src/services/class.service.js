@@ -84,7 +84,7 @@ var ClassService = (function () {
             search: params
         });
         return this.http
-            .get('http://teammartini.herokuapp.com/GetTests', options)
+            .get('http://teammartini.herokuapp.com/Group/GetTests', options)
             .map(this.extractService.extractData)
             .catch(this.extractService.handleError);
     };
